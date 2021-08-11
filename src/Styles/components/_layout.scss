@@ -1,12 +1,70 @@
 .header{
-    height: 60px;
-    border: 1px solid black;
+    height: 100px;
+    background-color: #1b396a;
+    
+}
+
+.navbar{
+    display: flex;
+    justify-content: space-around;
+
+    h1{
+        margin-right: 35px;
+        color: white;
+    }
+}
+
+
+.perfil{
+    color: white;
 }
 
 .footer{
-    position: absolute;
-    bottom: 0;
-    border: 1px solid black;
-    width: 100%;
+    background-color: #1b396a;
+    text-align: center;
+    padding: 10px;
+    color: white;
+
+    p{
+        margin: 0;
+        padding: 0;
+    }
     
 }
+
+
+
+.imgHeader{
+    width: 80px;
+    height: 80px;
+    border-radius: 100px;
+};
+
+.navbar-nav .dropdown-menu{
+    position: absolute;
+}
+
+
+
+@media (max-width: 600px) {
+
+    .header{
+        height: 80px;
+    };
+
+    .imgHeader{
+        width: 60px;
+        height: 60px;
+    };
+    .dropdown-menu[data-bs-popper]{
+        left: -100px;
+        top: 80%;
+    };
+
+    h1{
+        margin-right: 15px;
+    }
+    
+    
+  }
+  

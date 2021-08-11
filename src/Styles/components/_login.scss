@@ -1,0 +1,53 @@
+.containerLogin{
+    width: 100%;
+    min-height: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .logoIttla{
+        width: 300px;
+        margin-top: 15px;
+        margin-left: 15px;
+        img{
+            width: 100%;
+        };
+    };
+    
+};
+    .iniciarSecion{
+        width: 100%;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        input{
+            width: 180px;
+            text-align: center;
+        }
+
+        button{
+            background-color: #1b7c41;
+            color: white;
+            width: 120px;
+            
+            &:hover{
+                background-color: #225636;
+                color: white
+            }
+        };
+
+        
+    }
+
+
+    @media (max-width: 600px) {
+        .containerLogin{
+            min-height: 600px;
+        .logoIttla{
+            width: 200px;
+        };
+    }
+        
+      }
+      

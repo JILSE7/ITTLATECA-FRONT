@@ -1,7 +1,15 @@
 @import './components/_main';
 @import './components/_layout';
+@import './components/_login';
 
 *{
     margin: 0;
     padding: 0;
+}
+
+.fohe{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
 }

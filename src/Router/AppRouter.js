@@ -16,15 +16,15 @@ import RegisterScreen from '../Screens/RegisterScreen';
 const AppRouter = () => {
     return (
         <Router>
-            <div>
                 <Layout>
+            <div>
                 <Switch>
                     <Route exact path="/login" component ={LoginScreen} />
                     <Route exact path="/register" component ={RegisterScreen} />
                     <Route exact path="/" component ={MainScreen} />
                 </Switch>
-                </Layout>
             </div>
+                </Layout>
         </Router>
     )
 }
