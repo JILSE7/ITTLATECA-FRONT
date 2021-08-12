@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { memo } from 'react'
+import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom'
 
-const MainScreen = () => {
-
+const MainScreen = memo(() => {
+    const {user} = useSelector(state => state.auth)
+    
+    //Navegacion
     const {push} = useHistory();
-
     const buscarLibro = () => push('/search');
     const misPrestamos = () => push('/prestamos');
     const panelAdmin = () => push('/admin');
@@ -12,7 +14,8 @@ const MainScreen = () => {
     return (
         <div className="container">
             <div className="saludo">
-                <h1>Bienvenido Said</h1>
+                <h1>Bienvenido</h1>
+                <h2>{user.nombre} {user.apellidos} </h2>
                 <h2>Que haremos el dia de hoy?</h2>
             </div>
 
@@ -32,6 +35,6 @@ const MainScreen = () => {
             </div>
         </div>
     )
-}
+})
 
 export default MainScreen

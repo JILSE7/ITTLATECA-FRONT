@@ -1,10 +1,16 @@
-import React from 'react'
-import AppRouter from './Router/AppRouter'
+import React from 'react';
+import {Provider} from 'react-redux';
 
-import  './Styles/Styles.scss'
+import { store } from './Store/store';
+import AppRouter from './Router/AppRouter';
+
+import  './Styles/Styles.scss';
+
 const Ittlateca = () => {
     return (
-        <AppRouter/>
+        <Provider store = {store}>
+            <AppRouter/>
+        </Provider>
     )
 }
 
