@@ -4,17 +4,54 @@
     flex-flow: column wrap;
     justify-content: center;
     align-items: center;
+    margin: 20px 0;
 
-    ol{
+    ul{
         display: flex;
         width: 100%;
         justify-content: space-between;
-        
     }
 }
 
+.form-control:focus {
+
+    outline: none;
+
+    outline-width: 0 !important;
+
+    box-shadow: none;
+
+    -moz-box-shadow: none;
+
+    -webkit-box-shadow: none;
+
+}
 ._busquedas_form{
-    border: 1px solid black;
+    
+    form{
+        display: flex;
+        justify-content: space-between;
+    }
+    input{
+        width: 75%;
+        border: 1px solid #198754;
+        &::placeholder{
+            color: #198754;
+        }
+        &:active {
+            border: none;
+        }
+        &:focus {
+            border:1px solid #198754;
+            background-color: white;
+            outline: none;
+            }
+    }
+
+    button{
+        width: 25%;
+    }
+      
 }
 
 
@@ -22,7 +59,7 @@
 
 @media (max-width: 600px) {
     ._busquedas_info{
-        ol{
+        ul{
             flex-direction: column;
             border: 1px solid black;
             

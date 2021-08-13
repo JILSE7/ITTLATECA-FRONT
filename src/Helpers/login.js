@@ -41,3 +41,20 @@ export const loginMesagges = (login) => {
             return
     }
 }
+
+
+export const booksMensaje =(libro) => {
+    return Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title : libro.msg, 
+        showConfirmButton : false,
+        timer: 2000,
+        padding: '3em',
+        background: '#fff',
+        backdrop: `
+            rgba(0,0,123,0.4)
+            left top
+            no-repeat
+        `});
+}

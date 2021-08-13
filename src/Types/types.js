@@ -1,6 +1,9 @@
 
 
 export const types = {
+    //Logs
     login : "[AUTH] - LOGIN",
-    logout : "[AUTH] LOGOUT"
+    logout : "[AUTH] LOGOUT",
+    //Books
+    getBooks : '[BOOKS] GET'
 }
