@@ -1,0 +1,33 @@
+
+._busquedas_info{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+
+    ol{
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        
+    }
+}
+
+._busquedas_form{
+    border: 1px solid black;
+}
+
+
+
+
+@media (max-width: 600px) {
+    ._busquedas_info{
+        ol{
+            flex-direction: column;
+            border: 1px solid black;
+            
+        }
+    }
+    
+  }
+  

@@ -1,17 +1,16 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-import { startLogin } from '../Actions/auth';
-import { useForm } from '../Hooks/useForm'
+import React from 'react'
+import { useDispatch, } from 'react-redux';
+import { startLogin } from '../../Actions/auth';
+import { useForm } from '../../Hooks/useForm'
 
 //LogoItics
-import logo from '../Assets/itics.png';
+import logo from '../../Assets/itics.png';
 import { useHistory } from 'react-router-dom';
 
 const LoginScreen = () => {
     //Redux
-    const {login, user} = useSelector(state => state.auth);
     const {replace} = useHistory();
-    useEffect(() => {if(login)replace('/') }, [login, replace]);
+   
     const dispatch = useDispatch();
     //CustomHook
     const [values, handleInputChange] = useForm({numeroC: '', password: ''});
@@ -21,6 +20,7 @@ const LoginScreen = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(startLogin(values));
+        replace('/')
     }
 
 

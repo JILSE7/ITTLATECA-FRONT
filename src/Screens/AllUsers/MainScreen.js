@@ -1,15 +1,22 @@
-import React, { memo } from 'react'
+import React, { memo, useMemo } from 'react'
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom'
 
+//Icons
+import {GiBookCover, GiOpenFolder} from'react-icons/gi'
+import {GoTools} from 'react-icons/go';
+
 const MainScreen = memo(() => {
     const {user} = useSelector(state => state.auth)
-    
+    console.log(window.outerWidth);
     //Navegacion
     const {push} = useHistory();
-    const buscarLibro = () => push('/search');
+    const buscarLibro = () => push('/busquedas');
     const misPrestamos = () => push('/prestamos');
     const panelAdmin = () => push('/admin');
+
+    const IconSize = useMemo(() => ({fontSize: '25px', marginLeft:"3px" }), []);
+    const fondoIcons = (color)=> (window.outerWidth<=600) ? `btn btn-outline-${color}` : `btn btn-${color}`;
 
     return (
         <div className="container">
@@ -20,9 +27,9 @@ const MainScreen = memo(() => {
             </div>
 
             <main className="menuBotones">
-                <button onClick={buscarLibro} className="btn btn-success">Busquemos un libro</button>
-                <button onClick={misPrestamos} className="btn btn-warning">Mis prestamos</button>
-                <button onClick={panelAdmin} className="btn btn-info">Panel de administrador</button>
+                <button onClick={buscarLibro} className={fondoIcons("success")}>Buscar <GiBookCover style={IconSize}/></button>
+                <button onClick={misPrestamos} className={fondoIcons("warning")}>Mis prestamos <GiOpenFolder style={IconSize}/></button>
+                <button onClick={panelAdmin} className={fondoIcons("info")}>Administradores  <GoTools style={IconSize}/></button>
             </main>
 
             <div className="avisos">
