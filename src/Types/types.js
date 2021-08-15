@@ -5,5 +5,6 @@ export const types = {
     login : "[AUTH] - LOGIN",
     logout : "[AUTH] LOGOUT",
     //Books
-    getBooks : '[BOOKS] GET'
+    getBooks : '[BOOKS] GET',
+    destroyBooks: '[BOOKS] DESTROY'
 }

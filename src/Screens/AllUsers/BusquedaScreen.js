@@ -1,13 +1,37 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { startGetBooks } from '../../Actions/books';
+import { busquedaBooks } from '../../Helpers/searchBooks';
+import { useForm } from '../../Hooks/useForm';
 
 const BusquedaScreen = () => {
     //Redux
     const dispatch = useDispatch();
-    const {total, libros} = useSelector(state => state.books);
+    const {total} = useSelector(state => state.books);
+
+    //useEffect(() => { if(!total)dispatch(startGetBooks()) }, [dispatch, total]);
+    const [libros, setlibros] = useState([]);
+
+    //UseForm
+    const [{search}, handleInputChange] = useForm({search: ''})
+    const handlerSubmit = async(e)=> {
+        e.preventDefault();
+        const validador = escapeRegExp(search)
+        const {ok, results} =  await busquedaBooks(validador)
+        if(ok){
+            if(results && results.length > 0){
+                setlibros([...results])
+            };
+        }else{
+            console.log('error');
+        }
         
-    useEffect(() => { if(!total)dispatch(startGetBooks()) }, [dispatch, total]);
+    }
+
+    function escapeRegExp (string) {
+        return string.replace(/[.*+?^${}()|[\]\\]/g, '[$&]')
+      }
+    console.log(libros);
 
 
     return (
@@ -24,9 +48,9 @@ const BusquedaScreen = () => {
                     <p>{total} Libros en biblioteca</p>
                 </div>
                 <div className="_busquedas_form">
-                    <form>
-                        <input type="text" placeholder="Busquemos un libro" className=" form form-control"/>
-                        <button className="btn btn-outline-success">Buscar</button>
+                    <form onSubmit={handlerSubmit}>
+                        <input type="text" placeholder="Busquemos un libro" className=" form form-control" name="search" value={search} onChange={handleInputChange}/>
+                        <button type="submit" className="btn btn-outline-success">Buscar</button>
                     </form>
                 </div>
             </div>

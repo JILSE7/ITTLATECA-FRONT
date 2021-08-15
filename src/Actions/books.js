@@ -1,4 +1,3 @@
-import Swal from "sweetalert2";
 import { fetchConToken } from "../Helpers/fetch";
 import { booksMensaje } from "../Helpers/login";
 import { types } from "../Types/types";
@@ -25,4 +24,9 @@ export const startGetBooks = () => {
         }
 
     }
-}
+};
+
+
+export const destroyBooks = () => ({
+    type: types.destroyBooks
+})

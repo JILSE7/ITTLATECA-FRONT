@@ -5,7 +5,8 @@ import { logOut } from '../../Actions/auth';
 import {FaUserCircle} from 'react-icons/fa'
 
 //Logos
-import tecnm from '../../Assets/tecnm.png';
+//import tecnm from '../../Assets/tecnm.png';
+import { destroyBooks } from '../../Actions/books';
 
 const Header = () => {
     //Redux
@@ -16,6 +17,7 @@ const Header = () => {
     
     const handlerLogout = () =>{
       dispatch(logOut());
+      dispatch(destroyBooks());
       history.replace('/login');
       localStorage.clear();
     }

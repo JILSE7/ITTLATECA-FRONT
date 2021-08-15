@@ -1,4 +1,3 @@
-import Swal from "sweetalert2";
 import { fetchConToken, fetchSinToken } from "../Helpers/fetch";
 import { loginMesagges } from "../Helpers/login";
 import { types } from "../Types/types"

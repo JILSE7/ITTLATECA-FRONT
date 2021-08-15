@@ -11,7 +11,11 @@ export const bookReducer = (state = initialState, action) => {
             return{
                 total: action.payload.total,
                 libros : action.payload.books
-            }
+            };
+            case types.destroyBooks:
+                return {
+                    libros: []
+                }
         default:
             return state;
     }
