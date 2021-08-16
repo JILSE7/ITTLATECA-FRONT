@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { startGetBooks } from '../../Actions/books';
-import { busquedaBooks } from '../../Helpers/searchBooks';
-import { useForm } from '../../Hooks/useForm';
+import { saveBooks } from '../../../Actions/books';
+import CardBook from '../../../Components/Busqueda/CardBook';
+import { busquedaBooks } from '../../../Helpers/searchBooks';
+import { useForm } from '../../../Hooks/useForm';
 
-const BusquedaScreen = () => {
+
+const BusquedaScreen = ({history}) => {
     //Redux
     const dispatch = useDispatch();
     const {total} = useSelector(state => state.books);
@@ -13,30 +15,28 @@ const BusquedaScreen = () => {
     const [libros, setlibros] = useState([]);
 
     //UseForm
-    const [{search}, handleInputChange] = useForm({search: ''})
+    const [{search}, handleInputChange] = useForm({search: ''});
+
     const handlerSubmit = async(e)=> {
         e.preventDefault();
-        const validador = escapeRegExp(search)
-        const {ok, results} =  await busquedaBooks(validador)
+        const {ok, results} =  await busquedaBooks(search)
         if(ok){
             if(results && results.length > 0){
-                setlibros([...results])
+                setlibros([...results]);
+                dispatch(saveBooks(results))
             };
         }else{
             console.log('error');
-        }
-        
-    }
+        };
+    };
 
-    function escapeRegExp (string) {
-        return string.replace(/[.*+?^${}()|[\]\\]/g, '[$&]')
-      }
+  
     console.log(libros);
 
 
     return (
         <div className="container">
-            <div>
+            
                 <h2 className="text-center mt-3">¿Que Libro buscaremos el dia de hoy?</h2>
                 <div className="_busquedas_info">
                     <h4 className="mb-4">Recuerda que puedes buscar por: </h4>
@@ -53,7 +53,15 @@ const BusquedaScreen = () => {
                         <button type="submit" className="btn btn-outline-success">Buscar</button>
                     </form>
                 </div>
-            </div>
+                <div className="_busquedas-result">
+
+                    <div className="_busqueda-card-padre">
+                                    {
+                                        libros && libros.map((libro, i) => (<CardBook libro={libro} key={i+'book'} history={history}/>))
+                                    }
+                    </div>
+                </div>
+            
         </div>
     )
 }

@@ -33,9 +33,29 @@ import { fetchConToken } from "./fetch"
 
 
 export const busquedaBooks = async(search) => {
-
-    const busqueda = await (await fetchConToken(`libros/${search}`)).json();
+    const validacionSearch = escapeRegExp(search);
+    const busqueda = await (await fetchConToken(`libros/${validacionSearch}`)).json();
 
     console.log(busqueda);
     return busqueda;
+};
+
+function escapeRegExp (string) {
+    return string.replace(/[.*+?^${}()|[\]\\]/g, '[$&]')
+};
+
+
+export const identificarLibro = async(id) => {
+
+    const libro = await (await fetchConToken(`libros/${id}`)).json();
+    
+    return libro;
+    
+};
+
+
+export const indentificarLibroState = (libros, id) => {
+    const libro = libros.filter(libro => libro.idLibro === id);
+
+    return libro
 }

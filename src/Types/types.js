@@ -6,5 +6,6 @@ export const types = {
     logout : "[AUTH] LOGOUT",
     //Books
     getBooks : '[BOOKS] GET',
-    destroyBooks: '[BOOKS] DESTROY'
+    destroyBooks: '[BOOKS] DESTROY',
+    saveBooks: '[BOOKS] SAVE'
 }

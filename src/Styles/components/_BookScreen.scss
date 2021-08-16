@@ -1,0 +1,47 @@
+._bookScreen-body{
+    border: $base-border;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+
+    ._bookScreen-imagen{
+        width:50%;
+        border: $base-border;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        ._bookScreen-imagen-f{
+            width: 80%;
+            height: 500px;
+            border: $base-border;
+        }
+    }
+    ._bookScreen-info{
+        width: 50%;
+        border: $base-border;
+    }
+
+};
+
+
+@media (max-width: 800px) {
+    
+    ._bookScreen-body{
+            flex-direction: column;
+    
+        ._bookScreen-imagen{
+            width:100%;
+            ._bookScreen-imagen-f{
+                width: 100%;
+                height: 500px;
+                border: $base-border;
+            }
+        }
+        ._bookScreen-info{
+            width: 100%;
+            border: $base-border;
+        }
+    
+    };
+  }
+  

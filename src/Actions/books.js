@@ -29,4 +29,12 @@ export const startGetBooks = () => {
 
 export const destroyBooks = () => ({
     type: types.destroyBooks
-})
+});
+
+
+export const saveBooks = (books) => {
+    return {
+    type: types.saveBooks,
+    payload : books
+}
+}
