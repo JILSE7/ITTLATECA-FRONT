@@ -1,0 +1,73 @@
+
+._admin-body{
+    height: 60vh;
+    width: 80%;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    .menuBotonesAdmin{
+        width: 100%;
+        height: 40%;
+        display: flex;
+        justify-content: space-around;
+        margin-top: 50px;
+    }
+
+    .icon{
+        transition: all 300ms;
+        .icono-admin{
+            font-size: 64px;
+            cursor: pointer;
+            transition: all 300ms;
+
+            &:hover{
+                font-size: 74px;
+            }
+        }
+
+     p{
+         margin: 0;
+         font-size: 24px;
+     }
+    }
+    
+    
+    .user{
+        color: rgb(83, 160, 6);
+        &:hover{
+            color: rgb(63, 116, 11);
+        }
+    }
+
+    .books{
+        color: orangered;
+        &:hover{
+            color: rgb(211, 89, 7);
+        }
+    }
+
+    .prestamo{
+        color: rgb(238, 175, 16);
+        &:hover{
+            color: rgb(252, 146, 8);
+        }
+    }
+}
+
+
+
+@media (max-width: 600px) {
+    ._admin-body{
+    .menuBotonesAdmin{
+        width: 50%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+
+    }
+}    
+  }
+  

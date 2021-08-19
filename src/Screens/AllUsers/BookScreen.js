@@ -54,33 +54,34 @@ const BookScreen = () => {
                             </thead>
                             <tbody>
                                 <tr>
-                                <th scope="row">  <GiWhiteBook style={{fontSize: '24px'}}/>  </th>
-                                <td>{libro.nombre}</td>
+                                    <th scope="row">  <GiWhiteBook style={{fontSize: '24px'}}/>  </th>
+                                    <td>{libro.nombre}</td>
                                 </tr>
                                 <tr>
-                                <th scope="row"> <RiUser2Fill style={{fontSize: '24px'}}/></th>
-                                <td>{libro.autor}</td>
+                                    <th scope="row"> <RiUser2Fill style={{fontSize: '24px'}}/></th>
+                                    <td>{libro.autor}</td>
                                 </tr>
                                 <tr>
-                                <th scope="row"><BiBookmarks style={{fontSize: '24px'}}/></th>
-                                <td colspan="2">{libro.editorial}</td>
+                                    <th scope="row"><BiBookmarks style={{fontSize: '24px'}}/></th>
+                                    <td colspan="2">{libro.editorial}</td>
                                 </tr>
                                 <tr>
-                                <th scope="row"><AiOutlineFieldNumber style={{fontSize: '24px'}}/></th>
-                                <td colspan="2">{libro.edicion}</td>
+                                    <th scope="row"><AiOutlineFieldNumber style={{fontSize: '24px'}}/></th>
+                                    <td colspan="2">{libro.edicion}</td>
                                 </tr>
                                 <tr>
-                                <th scope="row"><ImBooks style={{fontSize: '24px'}}/></th>
-                                <td colspan="2">{libro.existencias}</td>
+                                    <th scope="row"><ImBooks style={{fontSize: '24px'}}/></th>
+                                    <td colspan="2">{libro.existencias}</td>
                                 </tr>
                                 <tr>
-                                <th scope="row"><IoMdCheckmarkCircle style={{fontSize: '24px'}}/></th>
-                                <td colspan="2">{libro.disponibles}</td>
+                                    <th scope="row"><IoMdCheckmarkCircle style={{fontSize: '24px'}}/></th>
+                                    <td colspan="2">{libro.disponibles}</td>
                                 </tr>
                                 <tr>
-                                <th scope="row"><RiPinDistanceLine style={{fontSize: '24px'}}/></th>
-                                <td colspan="2">{libro.ubicacion}</td>
+                                    <th scope="row"><RiPinDistanceLine style={{fontSize: '24px'}}/></th>
+                                    <td colspan="2">{libro.ubicacion}</td>
                                 </tr>
+                                
                             </tbody>
                         </table>
                 </div> 

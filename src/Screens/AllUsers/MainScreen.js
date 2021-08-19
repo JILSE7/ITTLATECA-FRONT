@@ -8,7 +8,7 @@ import {GoTools} from 'react-icons/go';
 
 const MainScreen = memo(() => {
     const {user} = useSelector(state => state.auth)
-    console.log(window.outerWidth);
+    
     //Navegacion
     const {push} = useHistory();
     const buscarLibro = () => push('/busquedas');
@@ -29,7 +29,7 @@ const MainScreen = memo(() => {
             <main className="menuBotones">
                 <button onClick={buscarLibro} className={fondoIcons("success")}>Buscar <GiBookCover style={IconSize}/></button>
                 <button onClick={misPrestamos} className={fondoIcons("warning")}>Mis prestamos <GiOpenFolder style={IconSize}/></button>
-                <button onClick={panelAdmin} className={fondoIcons("info")}>Administradores  <GoTools style={IconSize}/></button>
+               {user.type === 'ADMINISTRADOR' && <button onClick={panelAdmin} className={fondoIcons("info")}>Administradores  <GoTools style={IconSize}/></button>}
             </main>
 
             <div className="avisos">

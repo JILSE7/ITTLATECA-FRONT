@@ -11,7 +11,6 @@ $base-border: 1px solid black;
     flex-direction: column;
     align-items: center;
     background-color: rgb(255, 255, 255);
-    border: $base-border;
     flex-wrap: wrap;
     .saludo{
         text-align: center;
@@ -19,7 +18,7 @@ $base-border: 1px solid black;
     }
     
     .menuBotones{
-        height: 280px;
+        min-height: 200px;
         display: flex;
         flex-direction: column;
         justify-content: space-around;

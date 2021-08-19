@@ -26,7 +26,7 @@ const Header = () => {
         <div className="header">
             <nav className="navbar">
                 
-                <Link to="/login" className="navbar-brand" >
+                <Link to="/" className="navbar-brand" >
                 <img className="imgHeader" src="https://universidadesdemexico.mx/logos/original/logo-instituto-tecnologico-de-tlalnepantla.png" alt="" /> 
                 </Link>
                 

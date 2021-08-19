@@ -7,5 +7,10 @@ export const types = {
     //Books
     getBooks : '[BOOKS] GET',
     destroyBooks: '[BOOKS] DESTROY',
-    saveBooks: '[BOOKS] SAVE'
+    saveBooks: '[BOOKS] SAVE',
+    //Users
+    getUser : '[USERS] GET',
+
+    //Prestamos
+    getPrestamos: '[PRESTAMOS] GET'
 }

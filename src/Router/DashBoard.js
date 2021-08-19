@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import { Route, Switch } from "react-router-dom";
+import AdminScreen from "../Screens/Admin/AdminScreen";
 import LibroScreen from "../Screens/Admin/LibroScreen";
 import PrestamoScreen from "../Screens/Admin/PrestamoScreen";
 import UsuarioScreen from "../Screens/Admin/UsuarioScreen";
@@ -10,7 +11,9 @@ import MainScreen from '../Screens/AllUsers/MainScreen';
 import PerfilScreen from "../Screens/AllUsers/PerfilScreen";
 
 export const DashBoardRoutes = () => {
-    const {user:type} = useSelector(state => state.auth);
+    const {user} = useSelector(state => state.auth);
+    
+    console.log(user);
     
 
     return (
@@ -20,9 +23,10 @@ export const DashBoardRoutes = () => {
                 <Route exact path="/perfil" component={PerfilScreen}/>
                 <Route exact path="/busquedas" component={BusquedaScreen}/>
                 <Route exact path="/libro/:id" component={BookScreen}/>
-                <Route exact path="/admin/usuario"><UsuarioScreen/></Route>
-                <Route exact path="/admin/prestamo" ><PrestamoScreen/></Route>
-                <Route exact path="/admin/libro" ><LibroScreen type={type}/></Route>
+                <Route exact path="/admin"><AdminScreen user={user}/></Route>
+                <Route exact path="/admin/usuarios"><UsuarioScreen user={user}/></Route>
+                <Route exact path="/admin/prestamos" ><PrestamoScreen user={user}/></Route>
+                <Route exact path="/admin/libros" ><LibroScreen user={user}/></Route>
             </Switch>
         </div>
     )
