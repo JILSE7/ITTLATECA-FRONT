@@ -2,38 +2,46 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { startGetUsers } from '../../Actions/user';
 import TableUsers from '../../Components/Admin/TableUsers';
+import { busquedUsuario } from '../../Helpers/searchBooks';
+import { useForm } from '../../Hooks/useForm';
 import useType from '../../Hooks/useType';
 
 const UsuarioScreen = ({user}) => {
     //Veificando administrador
     useType(user.type);
-
+    const [{search}, handleInputChange] = useForm({search:''});
     const usuarios = useSelector(state => state.users);
     
-    console.log(usuarios.users);
+    //states
+    const [users, setUsers] = useState([])
+    const [searchUsers, setSearchUsers] = useState([])
+    
 
     const dispatch = useDispatch();
     useEffect(() => {
         if(!usuarios.total){
             dispatch(startGetUsers());
+        }else{
+            setUsers([...usuarios.users])
         }
-    }, []);
-
+    }, [dispatch, usuarios]);
 
     
-  /*   useEffect(() => {
-        if(!libros.total){
-            dispatch(startGetBooks());
-        }else{
-            setlibros([...libros.libros])
-        }
-    }, [libros]); */
+    
+    
+    useEffect(() => {
+        setSearchUsers(busquedUsuario(users, search));
+    }, [users,search]);
+    
+    
 
     
     return (
         <div className="container">
             <div className="_LibroScreen-body">
-                Buscar
+            <div className="buscar"> 
+                    <input placeholder="Buscar por Nombre, NumeroC" className="form-control" name="search" value={search} onChange={handleInputChange}/>
+                </div>
             <table class="table">
                 <thead>
                     <tr className="text-center font-id">
@@ -52,11 +60,9 @@ const UsuarioScreen = ({user}) => {
                 </thead>
                 <tbody className="tablebody">
                     {  
-                       usuarios.users.map(user => (<TableUsers user={user}/>))
+                       (searchUsers.length > 0) ? searchUsers.map(user => (<TableUsers user={user}/>)) : usuarios.users.map(user => (<TableUsers user={user}/>))
 
                     } 
-                    
-                
                 </tbody>
                 </table>
             </div>

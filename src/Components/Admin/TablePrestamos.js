@@ -1,8 +1,8 @@
 import React from 'react'
 import { MdDelete, MdModeEdit } from 'react-icons/md';
+import {FaHandHolding} from 'react-icons/fa'
 
 const TablePrestamos = ({prestamo}) => {
-    console.log(prestamo);
     const {idPrestamo, usuario,userAdmin, libro,fechaRetiro, fechaDevolucion, devolucion,observaciones, activo } = prestamo;
     return (
         <tr className="table-row align-middle">
@@ -15,7 +15,13 @@ const TablePrestamos = ({prestamo}) => {
         <td>{(devolucion) ? "true"  :"false"}</td>
         <td>{observaciones}</td>
         <td>{(activo) ? "Activo" : "No Activo"}</td>
-        <td colSpan="2"><button className="btn btn-warning"><MdModeEdit/></button><button className="btn btn-danger"><MdDelete/></button></td>
+        <td colSpan="2">
+            <div className="botones-accion">
+            <button className="btn btn-info"><FaHandHolding/></button>
+            <button className="btn btn-warning"><MdModeEdit/></button>
+            <button className="btn btn-outline-danger"><MdDelete/></button>
+            </div>
+            </td>
 </tr>
     )
 }

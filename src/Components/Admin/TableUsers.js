@@ -2,7 +2,6 @@ import React from 'react'
 import { MdDelete, MdModeEdit } from 'react-icons/md';
 
 const TableUsers = ({user}) => {
-    console.log(user);
     const {uid, nombre, apellidos, email, telefono, numeroC, carrera, type, activo, prestamos} = user;
     return (
         <tr className="table-row align-middle">

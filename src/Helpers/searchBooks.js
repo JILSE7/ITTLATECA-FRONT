@@ -59,3 +59,78 @@ export const indentificarLibroState = (libros, id) => {
 
     return libro
 }
+
+
+
+export const libroTable = (arreglo, search) => {
+       //Capitalizando la busqueda para los nombres
+       let searchCapi = '';
+       if(search) searchCapi =  search[0].toUpperCase() +  search.slice(1);
+
+    //Haciendo los filttros
+    const searchByName = arreglo.filter(libro => libro.nombre.includes(search) || libro.nombre.includes(search.toUpperCase()) );
+    const searchByAutor = arreglo.filter(libro => libro.autor.includes(search) || libro.autor.includes(search.toUpperCase()) || libro.autor.includes(searchCapi));
+    const searchByEditorial = arreglo.filter(libro => libro.editorial.includes(search) || libro.editorial.includes(search.toUpperCase()) );
+
+          //Haciendo un arreglo con los resultados
+          const results = [...searchByName, ...searchByAutor,...searchByEditorial]
+  
+        return eliminarDuplicados(results, arreglo)
+};
+
+
+
+export const busquedUsuario = (arreglo, search) => {
+    //Capitalizando la busqueda para los nombres
+    let searchCapi = '';
+    if(search) searchCapi =  search[0].toUpperCase() +  search.slice(1);
+
+    //Haciendo los filttros
+    const searchByName = arreglo.filter(user => user.nombre.includes(search) || user.nombre.includes(search.toUpperCase()) || user.nombre.includes(searchCapi));
+    const searchByNumeroC = arreglo.filter(user => user.numeroC.includes(search) || user.numeroC.includes(search.toUpperCase()) );
+
+       //Haciendo un arreglo con los resultados
+       const results = [...searchByName, ...searchByNumeroC]
+
+    return eliminarDuplicados(results, arreglo)
+
+}
+
+
+
+const eliminarDuplicados = (results, arreglo) => {
+
+      //Eliminando los duplciados
+      let noduplicados = new Set(results);
+      
+      //regresando el valor
+      if(noduplicados.size === arreglo.length){
+          noduplicados = []
+      }else{
+          noduplicados = [...noduplicados]
+      }
+      
+      return noduplicados;
+};
+
+
+
+export const prestamosNoDevueltos = (arreglo) => arreglo.filter(prestamo => prestamo.devolucion === false);
+
+
+export const busquedaPrestamos = (arreglo, search) => {
+    //Haciendo los filttros
+    const searchById = arreglo.filter(prestamo =>  prestamo.idPrestamo.includes(search) );
+    console.log(searchById);
+        let result = [];
+
+        //regresando el valor
+        if(searchById.length !== arreglo.length){
+            console.log('entre');
+            result = [...searchById]
+        }
+        
+        return result;
+}
+
+

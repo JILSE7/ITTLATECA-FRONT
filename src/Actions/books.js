@@ -37,4 +37,14 @@ export const saveBooks = (books) => {
     type: types.saveBooks,
     payload : books
 }
-}
+};
+
+
+
+//Agregar libro 
+export const addLibro = (libro) => {
+    return async(dispatch) => {
+        console.log(libro);
+    }
+};
+

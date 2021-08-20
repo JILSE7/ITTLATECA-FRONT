@@ -12,5 +12,13 @@ export const types = {
     getUser : '[USERS] GET',
 
     //Prestamos
-    getPrestamos: '[PRESTAMOS] GET'
+    getPrestamos: '[PRESTAMOS] GET',
+
+    //UI
+    openModal: '[MODAL] OPEN',
+    closeModal: '[MODAL] CLOSE',
+
+    //Active
+    setActive : '[ACTIVE] SET',
+    cleanActive: '[ACTIVE] CLEAN'
 }
