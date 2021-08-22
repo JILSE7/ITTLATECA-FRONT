@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from 'react'
-import { FaSearchengin } from 'react-icons/fa';
-import { RiBook2Line } from 'react-icons/ri';
+//Redux
 import { useDispatch, useSelector } from 'react-redux';
 import { startGetBooks } from '../../Actions/books';
 import { openModalAction } from '../../Actions/ui';
+//Components
 import TableLibros from '../../Components/Busqueda/TableLibros';
-import TableModal from '../../Components/Modal/TableModal';
+import ModalBook from '../../Components/Modal/ModalBook';
+//Helpers & Hooks
 import { libroTable } from '../../Helpers/searchBooks';
 import { useForm } from '../../Hooks/useForm';
 import useType from '../../Hooks/useType';
+//Icons
+import { FaSearchengin } from 'react-icons/fa';
+import { RiBook2Line } from 'react-icons/ri';
 
 
 const LibroScreen = ({user}) => {
@@ -79,7 +83,7 @@ const LibroScreen = ({user}) => {
                     }
                 </tbody>
                 </table>
-                <TableModal/>
+                <ModalBook/>
             </div>
         </div>
     )

@@ -44,13 +44,36 @@ const fetchConToken = (endpoint, data, method = 'GET') =>{
 };
 
 
+const fetchConTokenPrueba = (endpoint, data, method = 'GET') =>{
+
+    const url = `http://localhost:8081/ITTLATECA/${endpoint}`;
+    const token = localStorage.getItem('token') || '';
+    if(method === 'GET'){
+        return fetch(url, {
+            method,
+            headers: {
+                'x-token' : token
+            }
+        });
+    }else{
+        return fetch(url, {
+            method,
+            headers: {
+                'Content-type' : 'application/json',
+                'x-token' : token
+            },
+            body: JSON.stringify(data)
+        })
+    }
+};
+
 
 //Upload Cloudaniry
-export const uploadPhoto = async(post)=>{
+export const agregarLibro = async(post,endpoint)=>{
 
+    const url = `${baseURL}/${endpoint}`;
     var file = document.querySelector('#fileSelector');
     
-    const url = `http://localhost:8081/ITTLATECA/libros/`;
  
     //Es como el body que lleva la peticion
     const formData = new FormData();
@@ -74,14 +97,49 @@ export const uploadPhoto = async(post)=>{
     } catch (error) {
         throw error;
     }
+};
 
 
-}
+
+export const editarLibro = async(post,endpoint)=>{
+    const {idLibro} = post;
+    const url = `${baseURL}/${endpoint}/${idLibro}`;
+    var file = document.querySelector('#fileSelector');
+    console.log(file.files[0]);
+    
+    console.log(idLibro);
+ 
+    //Es como el body que lleva la peticion
+    const formData = new FormData();
+    formData.append('bookIMage', file.files[0]);
+    formData.append("libro", JSON.stringify(post));
+
+    const token = localStorage.getItem('token') || '';
+
+    try {
+        const respuesta = await (await fetch(url, {
+            method: "PUT",
+            headers: {
+                'x-token' : token
+            },
+            body: formData
+        })).json()
+
+        return respuesta;
+
+    } catch (error) {
+        throw error;
+    } 
+};
+
+
+
 
 
 
 
 export  {
     fetchSinToken,
-    fetchConToken
+    fetchConToken,
+    fetchConTokenPrueba
 }

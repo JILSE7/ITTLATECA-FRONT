@@ -1,4 +1,4 @@
-import { fetchSinToken } from "../Helpers/fetch";
+import { fetchConTokenPrueba, fetchSinToken } from "../Helpers/fetch";
 import { booksMensaje } from "../Helpers/login";
 import { types } from "../Types/types";
 
@@ -8,6 +8,8 @@ const getPrestamos = (total, prestamos) => ({
     type: types.getPrestamos,
     payload: {total, prestamos}
 });
+
+const deletePrestamo = () => ({type: types.deletePrestamo});
 
 
 
@@ -22,5 +24,12 @@ export const startGetPrestamos = () => {
             dispatch(getPrestamos(prestamos.total, prestamos.prestamos));
         }
         console.log(prestamos);
+    }
+}
+
+
+export const startDeletePrestamo = (idPrestamo, data ) => {
+    return async(dispatch) => {
+        await fetchConTokenPrueba(`/prestamos/${idPrestamo}`, data, 'DELETE');
     }
 }

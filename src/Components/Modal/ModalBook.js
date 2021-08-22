@@ -1,16 +1,16 @@
+import React, { useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
 import Modal from 'react-modal';
-
-import React, { useEffect, useState } from 'react';
+//Redux
 import { useDispatch, useSelector } from 'react-redux';
 import { cleanActive } from '../../Actions/active';
 import { closeModalAction } from '../../Actions/ui';
+//Helpers & Hooks
 import {useForm} from '../../Hooks/useForm'
+import { initialBook } from '../../Helpers/initialStates';
+import { validarPostLibro } from '../../Helpers/validarCampos';
 
 import {FcPicture} from 'react-icons/fc';
-import { initialBook } from '../../Helpers/initialStates';
-import { uploadPhoto } from '../../Helpers/fetch';
-import { validarPostLibro } from '../../Helpers/validarCampos';
 
 
 const customStyles = {
@@ -25,39 +25,39 @@ const customStyles = {
   };
   Modal.setAppElement('#root');
 
-const TableModal = () => {
+const ModalBook = () => {
     //Aux
-    let fileSelected;
+    let fileSelected = '';
 
     //Redux
     const dispatch = useDispatch();
     const {modalOpen} = useSelector(state => state.ui)
     const {active, item} = useSelector(state => state.active);
     
-  console.log(item);
-    
-
     //states
     const [values, handlerInputChange, reset, setValues] = useForm((!active) ?  initialBook:item);
-    useEffect(() => setValues((!active) ?  initialBook:item) , [active]);
-
-
     const [file, setFile] = useState("")
+
+
+    useEffect(() => setValues((!active) ?  initialBook:item) , [active]);
     
 
    const closeModal  =() =>{
      dispatch(cleanActive());
      dispatch(closeModalAction());
      reset();
-   }
+     fileSelected ='';
+     setFile('');
+   };
 
    const handlerSelectImage = (e) => {
      e.preventDefault();
      document.querySelector('#fileSelector').click();
-   }
+   };
    const handlerFileChange = async(e) =>{
 
       fileSelected =  e.target.files[0];
+      
       
               if(fileSelected){
                 const {isConfirmed, isDismissed} = await  Swal.fire({
@@ -72,17 +72,22 @@ const TableModal = () => {
                         if(isConfirmed){
                           console.log('entre al confirm');
                           setFile(fileSelected.name);
-                          
-                        }else if(isDismissed){
-                          setFile("");
+                          console.log( e.target.files[0]);
+                          fileSelected =e.target.files[0];
+                          console.log(fileSelected);
+                        }else{
+                          fileSelected ='';
+                          setFile('');
+                          console.log('entro aqui');
                         }
+            }else{
+              setFile('');
             }
-   }
+   };
 
    const handlerSubmit = (e) => {
     e.preventDefault();
-    console.log(values);
-    validarPostLibro(values,dispatch, reset);
+    validarPostLibro(values,dispatch, reset, (active) ? true : false);
    }
    
     return (
@@ -119,7 +124,7 @@ const TableModal = () => {
                 <input type="file" id="fileSelector" style={{display:'none'}} onChange={handlerFileChange}/>
                   <label>Agregar Imagen</label> <FcPicture  onClick={handlerSelectImage} style={{fontSize: '74px', cursor:'pointer'}}/>
                   <label>Nombre del Archivo: {(file)? file:'No ha seleccionado ninguna imagen'}</label>
-                <button type='submit' className="btn btn-outline-success mt-3 mb-3">Agregar</button>
+                <button type='submit' className="btn btn-outline-success mt-3 mb-3">{(active) ? "Editar" : "Agregar"}</button>
                 
             </div>
           </form>
@@ -128,4 +133,4 @@ const TableModal = () => {
     )
 }
 
-export default TableModal
+export default ModalBook;

@@ -13,6 +13,7 @@ export const types = {
 
     //Prestamos
     getPrestamos: '[PRESTAMOS] GET',
+    deletePrestamo: '[PRESTAMO] DELETE',
 
     //UI
     openModal: '[MODAL] OPEN',

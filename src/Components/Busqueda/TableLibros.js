@@ -2,8 +2,8 @@ import React from 'react'
 import { MdDelete, MdModeEdit } from 'react-icons/md'
 import { useDispatch, useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
-import { setActive } from '../../Actions/active';
-import { openModalAction } from '../../Actions/ui';
+import { cleanActive, setActive } from '../../Actions/active';
+import { closeModalAction, openModalAction } from '../../Actions/ui';
 
 const   TableLibros = ({libro}) => {
     //Desestructurando el objeto
@@ -14,19 +14,17 @@ const   TableLibros = ({libro}) => {
     const handlerEdit = async() =>{
         dispatch(setActive(libro)); 
         
-       /*  const resp = await Swal.fire({
+        const {isConfirmed} = await Swal.fire({
             title: `¿Estás seguro de editar ${libro.nombre} ?`,
-            icon: 'info', showCancelButton: true, confirmButtonColor: '#198754', cancelButtonColor: '#d33', confirmButtonText: 'Guardar',cancelButtonText: '!No, Espera¡'
-        }); */
+            icon: 'info', showCancelButton: true, confirmButtonColor: '#198754', cancelButtonColor: '#d33', confirmButtonText: 'Editar',cancelButtonText: '!No, Espera¡'
+        });
         
-        dispatch(openModalAction());
+       (isConfirmed) ?  dispatch(openModalAction()) : dispatch(cleanActive());
     }
 
-    const handlerActive = () =>{
-    }  
 
     return (
-        <tr className="table-row align-middle" onDoubleClick={handlerActive}>
+        <tr className="table-row align-middle" >
                     <th  scope="row" className="font-id">{idLibro}</th>
                     <td>{nombre}</td>
                     <td><img className="imagen-libro" src={imagen} alt={nombre}/></td>

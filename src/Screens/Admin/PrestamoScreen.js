@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { BiCheckbox, BiCheckboxChecked } from 'react-icons/bi';
+import { FaSearchengin } from 'react-icons/fa';
+import { RiBook2Line } from 'react-icons/ri';
 import { useDispatch, useSelector } from 'react-redux';
 import { startGetPrestamos } from '../../Actions/prestamos';
+import { openModalAction } from '../../Actions/ui';
 import TablePrestamos from '../../Components/Admin/TablePrestamos';
+import ModalPrestamo from '../../Components/Modal/ModalPrestamo';
 import { busquedaPrestamos, prestamosNoDevueltos } from '../../Helpers/searchBooks';
 import { useForm } from '../../Hooks/useForm';
 import useType from '../../Hooks/useType';
@@ -42,15 +46,26 @@ const PrestamoScreen = ({user}) => {
 
     useEffect(() => {
         setbusquedaSearch(busquedaPrestamos(prestamosState, search))
-    }, [search])
+    }, [search]);
+
+    const handlerClick = () =>{
+        dispatch(openModalAction());
+    }
 
     console.log(busquedaSearch);
     return (    
         <div className="container">
             <div className="_LibroScreen-body">
-            <div className="buscar"> 
-                    <input placeholder="Buscar por ultimos 4 digitos del id" className="form-control" name="search" value={search} onChange={handleInputChange}/>
-                    <p className="text-center mt-3">Filtrar por libros no devueltos { (!devoluciones) ? <BiCheckbox onClick={toggleDevoluciones}/> : <BiCheckboxChecked onClick={toggleDevoluciones}/> }</p> 
+            <div className="d-flex w-100">
+                    <div className="buscar"> 
+                        <h3 className="text-center"><FaSearchengin/> Buscar</h3>
+                        <input placeholder="Buscar por ultimos 4 digitos del id" className="form-control" name="search" value={search} onChange={handleInputChange}/>
+                        <p className="text-center mt-3">Filtrar por libros no devueltos { (!devoluciones) ? <BiCheckbox onClick={toggleDevoluciones}/> : <BiCheckboxChecked onClick={toggleDevoluciones}/> }</p> 
+                    </div>
+                    <div className="añadir">
+                        <h3>Añadir nuevo libro</h3>
+                        <button className="btn btn-outline-success mb-5" onClick={handlerClick}>+ <RiBook2Line/></button>
+                    </div>
                 </div>
             <table class="table">
                 <thead>
@@ -74,6 +89,7 @@ const PrestamoScreen = ({user}) => {
                     } 
                 </tbody>
                 </table>
+                <ModalPrestamo/>
             </div>
         </div>
     )
