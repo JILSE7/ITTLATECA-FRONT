@@ -29,30 +29,32 @@ const PrestamoScreen = ({user}) => {
 
 
     useEffect(() => {
-        if(!prestamos.total){
-            dispatch(startGetPrestamos());
+        if(!prestamos.ok && prestamos.total === null){
+           dispatch(startGetPrestamos());
         }else{
-            setPrestamos([...prestamos.prestamos])
+            setPrestamos( [...prestamos.prestamos])
         }
-    }, [prestamos, dispatch]);
+    }, [ prestamos,dispatch]);
 
     useEffect(() => {
         if(devoluciones){
             setPrestamos((prestamosState) => prestamosNoDevueltos(prestamosState))
         }else{
-            setPrestamos([...prestamos.prestamos])
+           setPrestamos([...prestamos.prestamos]);
         }
-    }, [devoluciones, prestamos.prestamos]);
+    }, [devoluciones, prestamos]);
 
     useEffect(() => {
+        console.log('useEffect Busqueda');
         setbusquedaSearch(busquedaPrestamos(prestamosState, search))
     }, [search]);
 
     const handlerClick = () =>{
+        
         dispatch(openModalAction());
     }
 
-    console.log(busquedaSearch);
+    
     return (    
         <div className="container">
             <div className="_LibroScreen-body">
@@ -63,7 +65,7 @@ const PrestamoScreen = ({user}) => {
                         <p className="text-center mt-3">Filtrar por libros no devueltos { (!devoluciones) ? <BiCheckbox onClick={toggleDevoluciones}/> : <BiCheckboxChecked onClick={toggleDevoluciones}/> }</p> 
                     </div>
                     <div className="añadir">
-                        <h3>Añadir nuevo libro</h3>
+                        <h3>Crear nuevo prestamo</h3>
                         <button className="btn btn-outline-success mb-5" onClick={handlerClick}>+ <RiBook2Line/></button>
                     </div>
                 </div>

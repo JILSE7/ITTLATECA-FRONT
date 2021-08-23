@@ -1,5 +1,5 @@
-import { fetchConTokenPrueba, fetchSinToken } from "../Helpers/fetch";
-import { booksMensaje } from "../Helpers/login";
+import { fetchConToken, fetchConTokenPrueba, fetchSinToken, fetchSinTokenPrueba } from "../Helpers/fetch";
+import { booksMensaje, toastMessage } from "../Helpers/login";
 import { types } from "../Types/types";
 
 
@@ -16,8 +16,8 @@ const deletePrestamo = () => ({type: types.deletePrestamo});
 export const startGetPrestamos = () => {
     return async(dispatch) => {
 
-        const prestamos = await (await fetchSinToken('/prestamos')).json();
-
+        const prestamos = await (await fetchSinTokenPrueba('/prestamos')).json();
+        console.log(prestamos);
         if(!prestamos.ok){
             booksMensaje(prestamos);
         }else{
@@ -30,6 +30,16 @@ export const startGetPrestamos = () => {
 
 export const startDeletePrestamo = (idPrestamo, data ) => {
     return async(dispatch) => {
-        await fetchConTokenPrueba(`/prestamos/${idPrestamo}`, data, 'DELETE');
+        try {
+            const resp = await (await fetchConToken(`/prestamos/${idPrestamo}`, data, 'DELETE')).json();
+            if(!resp.ok){
+                booksMensaje(resp);
+            }else{
+                toastMessage(resp)
+                dispatch(startGetPrestamos());
+            }    
+        } catch (error) {
+            console.log(error);
+        }
     }
 }

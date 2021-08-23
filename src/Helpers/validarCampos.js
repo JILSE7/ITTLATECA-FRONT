@@ -3,22 +3,11 @@ import { cleanActive } from "../Actions/active";
 import { startGetBooks } from "../Actions/books";
 import { closeModalAction } from "../Actions/ui";
 import { agregarLibro, editarLibro } from "./fetch";
+import { Toast } from "./login";
 
 
 
-//toast
-const Toast = Swal.mixin({
-    toast: true,
-    position: 'top-end',
-    showConfirmButton: false,
-    timer: 3000,
-    timerProgressBar: true,
-    didOpen: (toast) => {
-      toast.addEventListener('mouseenter', Swal.stopTimer)
-      toast.addEventListener('mouseleave', Swal.resumeTimer)
-    }
-  })
-  
+
 
 
 
@@ -105,6 +94,11 @@ const editBookPromise = async(libro,dispatch, reset) => {
     }
 
 }
+
+
+
+
+
 
 
 

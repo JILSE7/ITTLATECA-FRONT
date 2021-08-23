@@ -6,27 +6,37 @@ import Swal from 'sweetalert2';
 import { cleanActive, setActive } from '../../Actions/active';
 import { openModalAction } from '../../Actions/ui';
 import { startDeletePrestamo } from '../../Actions/prestamos';
+import { devolucionMessage, isConfirmed } from '../../Helpers/login';
 
 const TablePrestamos = ({prestamo}) => {
     const {idPrestamo, usuario,userAdmin, libro,fechaRetiro, fechaDevolucion, devolucion,observaciones, activo } = prestamo;
-
+    const nombre = usuario.nombre+ usuario.apellidos;
         //Redux
         const dispatch = useDispatch();
+
+        //Handlers
         const handlerEdit = async() =>{
             dispatch(setActive(prestamo)); 
-            
-            const {isConfirmed} = await Swal.fire({
-                title: `¿Estás seguro de editar El prestamo del usuario ${usuario.nombre} ${usuario.apellidos} ?`,
-                icon: 'info', showCancelButton: true, confirmButtonColor: '#198754', cancelButtonColor: '#d33', confirmButtonText: 'Editar',cancelButtonText: '!No, Espera¡'
-            });
-            
-           (isConfirmed) ?  dispatch(openModalAction()) : dispatch(cleanActive());
+            const resp =await  isConfirmed(nombre,true, 'warning');
+
+           (resp) ?  dispatch(openModalAction()) : dispatch(cleanActive());
         }
 
-        const handlerDelet = () => {
+        const handlerDelet = async() => {
+            const resp = await isConfirmed(nombre,false, 'error');
+
+            if(!resp)return;
+
             const data = {idLibro: libro._id, idUsuario: usuario._id};
-            
             dispatch(startDeletePrestamo(idPrestamo,data));
+        }
+
+        const handlerDevolucion =async() => {
+            console.log('realizando devolucion');
+
+            const resp = await devolucionMessage(libro.nombre);
+            console.log(resp);
+
         }
 
     return (
@@ -42,7 +52,7 @@ const TablePrestamos = ({prestamo}) => {
         <td>{(activo) ? "Activo" : "No Activo"}</td>
         <td colSpan="2">
             <div className="botones-accion">
-            <button className="btn btn-info"><FaHandHolding/></button>
+            <button className="btn btn-info" onClick={handlerDevolucion}><FaHandHolding/></button>
             <button className="btn btn-warning" onClick={handlerEdit}><MdModeEdit/></button>
             <button className="btn btn-outline-danger" onClick={handlerDelet}><MdDelete/></button>
             </div>

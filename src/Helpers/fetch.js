@@ -68,6 +68,25 @@ const fetchConTokenPrueba = (endpoint, data, method = 'GET') =>{
 };
 
 
+export const fetchSinTokenPrueba = (endpoint, data, method = 'GET') =>{
+
+    const url = `http://localhost:8081/ITTLATECA/${endpoint}`;
+    
+
+    if(method === 'GET'){
+        return fetch(url);
+    }else{
+        return fetch(url, {
+            method,
+            headers: {
+                'Content-type' : 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+    }
+}
+
+
 //Upload Cloudaniry
 export const agregarLibro = async(post,endpoint)=>{
 

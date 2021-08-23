@@ -69,3 +69,23 @@
     display: none;
 }
 
+
+//ant desing
+.ant-select:not(.ant-select-customize-input) .ant-select-selector{
+    border: none;
+}
+.ant-select-focused:not(.ant-select-disabled).ant-select:not(.ant-select-customize-input) .ant-select-selector{
+    border: none;
+}
+
+.ant-select-single:not(.ant-select-customize-input) .ant-select-selector .ant-select-selection-search-input{
+    height: 39px;
+}
+
+.ant-select-single:not(.ant-select-customize-input) .ant-select-selector{
+    height: 39px;
+}
+
+.ant-select-single .ant-select-selector::after, .ant-select-single .ant-select-selector .ant-select-selection-item::after, .ant-select-single .ant-select-selector .ant-select-selection-placeholder::after{
+    padding-top: 3px;
+}

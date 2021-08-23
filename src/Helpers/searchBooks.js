@@ -134,3 +134,13 @@ export const busquedaPrestamos = (arreglo, search) => {
 }
 
 
+export const busquedaUsuarioModal = (arreglo, search) => {
+    //Capitalizando la busqueda para los nombres
+    let searchCapi = '';
+    if(search) searchCapi =  search[0].toUpperCase() +  search.slice(1);
+
+    //Haciendo los filttros
+    const searchByName = arreglo.filter(user => user.nombre.includes(search) || user.nombre.includes(search.toUpperCase()) || user.nombre.includes(searchCapi));
+
+    console.log(searchByName);
+}
