@@ -1,36 +1,30 @@
 import React, { useEffect, useState } from 'react';
-import Swal from 'sweetalert2';
 import Modal from 'react-modal';
-
-
 
 //Redux
 import { useDispatch, useSelector } from 'react-redux';
 import { cleanActive } from '../../Actions/active';
 import { closeModalAction } from '../../Actions/ui';
+import { startGetUsers } from '../../Actions/user';
+import { startGetBooks } from '../../Actions/books';
 //Helpers & Hooks
 import {useForm} from '../../Hooks/useForm'
-import { customStyles, initialBook, initialPrestamo } from '../../Helpers/initialStates';
-import { validarPostLibro } from '../../Helpers/validarCampos';
+import { customStyles, initialBook, initialPrestamo, resetPrestamo } from '../../Helpers/initialStates';
+import { validarPostLibro, validarPostPrestamo } from '../../Helpers/validarCampos';
 
-import {FcPicture} from 'react-icons/fc';
-import {HiBadgeCheck, HiXCircle} from 'react-icons/hi';
-import { startGetUsers } from '../../Actions/user';
-import { busquedaUsuarioModal, busquedUsuario } from '../../Helpers/searchBooks';
-import { TextField } from '@material-ui/core';
+//Components
 import CompleteUser from '../AutoComplete/CompleteUser';
 import CompleteLibro from '../AutoComplete/CompleteLibro';
-import { startGetBooks } from '../../Actions/books';
+import Fecha from '../DatePicker/Fecha';
+
+//Icons
+import {HiBadgeCheck, HiXCircle} from 'react-icons/hi';
 
 
-
-  Modal.setAppElement('#root');
+Modal.setAppElement('#root');
 
 const ModalPrestamo = () => {
-    //Aux
-    let fileSelected = '';
-
-    //Redux
+      //Redux
     const dispatch = useDispatch();
     const {modalOpen} = useSelector(state => state.ui)
     const {active, item} = useSelector(state => state.active);
@@ -40,10 +34,11 @@ const ModalPrestamo = () => {
     //states
     const [values, handlerInputChange, reset, setValues] = useForm((!active) ?  initialPrestamo:item);
 
-    console.log(values);
     //Para buscar a los usuarios y libros
     const [users, setUsers] = useState([]);
     const [librosArr, setlibros] = useState([]);
+    //Para retroalimentar campos vacios
+    const [validate, setValidate] = useState(false)
 
     
     //Effects
@@ -57,7 +52,7 @@ const ModalPrestamo = () => {
       }
   }, [dispatch, usuarios, libros]);
 
-  useEffect(() => {
+  useEffect(() => {//Traer libros
     if(!libros.total){
         dispatch(startGetBooks());
     }else{
@@ -66,20 +61,23 @@ const ModalPrestamo = () => {
 }, [libros, dispatch]);
 
   
-    const closeModal  =() =>{
+    const closeModal  =() =>{ //Cerrar el modal
       dispatch(cleanActive());
       dispatch(closeModalAction());
-      reset();
+      resetPrestamo(values);
+      
     };
     const handlerSubmit = (e) => {
         e.preventDefault();
-        console.log(values);
-        //validarPostLibro(values,dispatch, reset, (active) ? true : false);
+        const resp = validarPostPrestamo(values, dispatch,  (active) ? true : false ); 
+
+        if(resp){
+          setValidate(true) 
+          setTimeout(() => setValidate(false), 2000);
+        }
     }
 
-    const autoClick =(e) => {
-      console.log(e);
-    }
+
     
     return (
         <Modal
@@ -104,9 +102,12 @@ const ModalPrestamo = () => {
                 {active ? (<input type="text"  className="form-control"  disabled name="libro" value={ values.libro.nombre} onChange={handlerInputChange}/>)  : (<CompleteLibro obj={values} books={librosArr}/>)}
                 
                 <label> Fecha de retiro</label>
-                <input type="text" className="form-control"  name="fechaRetiro" value={values.fechaRetiro} onChange={handlerInputChange}/>
+                {active ? <Fecha  values={values} edit={true} /> : <Fecha  values={values} />  }
+                
                 <label> Fecha de devolucion</label>
-                <input type="text"  className="form-control"  name="fechaDevolucion" value={values.fechaDevolucion} onChange={handlerInputChange}/>
+                
+                {active ? <Fecha values={values} retiro={false} edit={true}/> : <Fecha values={values} retiro={false} />  }
+                
                 {active && <>
                   <label> Devolucion</label>
                   <p>{(values.devolucion)? <HiBadgeCheck/>: <HiXCircle/>}</p>
@@ -115,12 +116,16 @@ const ModalPrestamo = () => {
                 <input type="text"  className="form-control"  name="observaciones" value={values.observaciones} onChange={handlerInputChange}/>
                 
                 <button type='submit' className="btn btn-outline-success mt-3 mb-3">{(active) ? "Editar" : "Agregar"}</button>
-                  
-                
-                
+                                
             </div>
           </form>
-          
+       { validate &&   <div class="alert alert-danger validate" role="alert"> A simple warning alert—check it out! </div>}
+          {active &&
+           (<>
+           <p>En la edicion de los prestamos solo se puede cambiar las fechas de retiro y entrega, al igual que las observaciones</p> 
+           <p>Si te equivocaste de usuario, porfavor borra este prestamo o si lo que quieres es realizar la devolucion, Haz click en la manita</p> 
+           </>)
+           }
         </div>
           </Modal>
     )

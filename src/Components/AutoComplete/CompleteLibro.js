@@ -6,7 +6,7 @@ const { Option } = AutoComplete;
 
 const CompleteLibro = ({books, obj}) => {
     const [result, setResult] = useState([]);
-    console.log(books);
+
     const handleSearch = (value) => {
 
              //Capitalizando la busqueda para los nombres

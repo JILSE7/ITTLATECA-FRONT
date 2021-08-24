@@ -5,8 +5,8 @@ import { useDispatch } from 'react-redux';
 import Swal from 'sweetalert2';
 import { cleanActive, setActive } from '../../Actions/active';
 import { openModalAction } from '../../Actions/ui';
-import { startDeletePrestamo } from '../../Actions/prestamos';
-import { devolucionMessage, isConfirmed } from '../../Helpers/login';
+import { startDeletePrestamo, startDevolucion } from '../../Actions/prestamos';
+import { devolucionMessage, isConfirmed, swalMenssage } from '../../Helpers/login';
 
 const TablePrestamos = ({prestamo}) => {
     const {idPrestamo, usuario,userAdmin, libro,fechaRetiro, fechaDevolucion, devolucion,observaciones, activo } = prestamo;
@@ -35,7 +35,11 @@ const TablePrestamos = ({prestamo}) => {
             console.log('realizando devolucion');
 
             const resp = await devolucionMessage(libro.nombre);
-            console.log(resp);
+            if(resp){
+                dispatch(startDevolucion(idPrestamo));
+            }else{
+                swalMenssage('Devolucion Cancelada')
+            }
 
         }
 

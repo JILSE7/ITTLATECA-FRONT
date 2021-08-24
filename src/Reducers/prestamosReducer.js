@@ -16,6 +16,14 @@ export const prestamosReducer = (state = initialState, action) => {
             total: action.payload.total,
             prestamos: [...action.payload.prestamos]
         }
+        case types.addPrestamo: 
+        return state
+    
+        case types.deletePrestamo:
+            return state
+        
+        case types.editPrestamo:
+            return state
     
         default:
             return state;

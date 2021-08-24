@@ -30,4 +30,13 @@ export const initialPrestamo = {
         fechaRetiro : "",
         fechaDevolucion : "",
         observaciones : ""
+};
+
+
+export const resetPrestamo = (obj) => {
+  obj.usuario = "";
+  obj.libro  = "";
+  obj.fechaRetiro  =  "";
+  obj.fechaDevolucion  =  "";
+  obj.observaciones =  ""
 }

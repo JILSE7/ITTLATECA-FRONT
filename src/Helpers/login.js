@@ -55,11 +55,11 @@ export const loginMesagges = (login) => {
 }
 
 
-export const booksMensaje =(libro) => {
+export const booksMensaje =(msg) => {
     return Swal.fire({
         position: 'center',
         icon: 'error',
-        title : libro.msg, 
+        title : msg, 
         showConfirmButton : false,
         timer: 2000,
         padding: '3em',
@@ -72,19 +72,28 @@ export const booksMensaje =(libro) => {
 };
 
 
+export const swalMenssage = (msg) => {
+    return Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title : msg, 
+        showConfirmButton : false,
+        timer: 2000,
+        padding: '3em',
+        background: '#fff',
+        backdrop: `
+            rgba(0,0,123,0.4)
+            left top
+            no-repeat
+        `});
+}
 
-export const toastMessage = (resp) => {
-    if(resp.ok){
+
+export const toastMessage = (msg) => {
         Toast.fire({
             icon: 'success',
-            title: `${resp.msg}`
+            title: `${msg}`
           });
-    }else{
-        Toast.fire({
-            icon: 'error',
-            title: `${resp.msg}`
-          });
-    };
 };
 
 

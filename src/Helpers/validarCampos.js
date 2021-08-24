@@ -1,9 +1,10 @@
 import Swal from "sweetalert2";
 import { cleanActive } from "../Actions/active";
 import { startGetBooks } from "../Actions/books";
+import { startAddPrestamo, startEditPrestamo } from "../Actions/prestamos";
 import { closeModalAction } from "../Actions/ui";
 import { agregarLibro, editarLibro } from "./fetch";
-import { Toast } from "./login";
+import { swalMenssage, Toast } from "./login";
 
 
 
@@ -24,6 +25,25 @@ export const validarPostLibro = async (libro, dispatch, reset, edit = false) => 
     }else{
         await agregarBookPromise(libro, dispatch, reset);
     }
+}
+
+export const validarPostPrestamo = (prestamo, dispatch, edit = false) => {
+    console.log(prestamo, edit);
+
+    if(!prestamo.usuario || !prestamo.libro || !prestamo.fechaRetiro || !prestamo.fechaDevolucion || !prestamo.observaciones){
+        return true;
+    } 
+
+    if(edit){
+        console.log('Vamos a editar');
+        dispatch(startEditPrestamo(prestamo.idPrestamo, prestamo))
+    }else{
+        console.log('vamos a agregar');
+        dispatch(startAddPrestamo(prestamo));
+        //await agregarBookPromise(libro, dispatch, reset);
+    }
+
+
 }
 
 
