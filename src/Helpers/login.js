@@ -61,7 +61,7 @@ export const booksMensaje =(msg) => {
         icon: 'error',
         title : msg, 
         showConfirmButton : false,
-        timer: 2000,
+        timer: 3000,
         padding: '3em',
         background: '#fff',
         backdrop: `
@@ -97,16 +97,23 @@ export const toastMessage = (msg) => {
 };
 
 
-export const isConfirmed = async(nombre, edit=true, icon) => {
+export const isConfirmed = async(nombre,mensaje  ,edit=true, icon) => {
     const {isConfirmed} = await Swal.fire({
-        title: (edit)? `¿Estás seguro de editar el prestamo de ${nombre} ` : `¿Estás seguro de eliminar el prestamo de  ${nombre} ` ,
+        title: (edit)? `¿Estás seguro de editar ${mensaje} de ${nombre} ` : `¿Estás seguro de eliminar ${mensaje} de  ${nombre} ` ,
         icon, showCancelButton: true, confirmButtonColor: '#198754', cancelButtonColor: '#d33', confirmButtonText:(edit) ?  'Editar': 'Borrar',cancelButtonText: '!No, Espera¡'
     });
     
    return isConfirmed;
 }
 
-
+export const isConexion = async(nombre,unable=true, icon) => {
+    const {isConfirmed} = await Swal.fire({
+        title: (!unable)? `¿Estás seguro de activar al usuario ${nombre} ` : `¿Estás seguro de desactivar al usuario  ${nombre} ` ,
+        icon, showCancelButton: true, confirmButtonColor: '#198754', cancelButtonColor: '#d33', confirmButtonText:(!unable) ?  'Activar': 'Desactivar',cancelButtonText: '!No, Espera¡'
+    });
+    
+   return isConfirmed;
+}
 
 export const devolucionMessage = async(nombreLibro) => {
     const { value: accept } = await Swal.fire({

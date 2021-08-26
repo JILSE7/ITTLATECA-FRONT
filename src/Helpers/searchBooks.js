@@ -87,10 +87,11 @@ export const busquedUsuario = (arreglo, search) => {
 
     //Haciendo los filttros
     const searchByName = arreglo.filter(user => user.nombre.includes(search) || user.nombre.includes(search.toUpperCase()) || user.nombre.includes(searchCapi));
+    const searchByFistName = arreglo.filter(user => user.apellidos.includes(search) || user.apellidos.includes(search.toUpperCase()) || user.apellidos.includes(searchCapi));
     const searchByNumeroC = arreglo.filter(user => user.numeroC.includes(search) || user.numeroC.includes(search.toUpperCase()) );
 
        //Haciendo un arreglo con los resultados
-       const results = [...searchByName, ...searchByNumeroC]
+       const results = [...searchByName, ...searchByNumeroC, ...searchByFistName]
 
     return eliminarDuplicados(results, arreglo)
 

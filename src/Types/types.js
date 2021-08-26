@@ -10,6 +10,9 @@ export const types = {
     saveBooks: '[BOOKS] SAVE',
     //Users
     getUser : '[USERS] GET',
+    postUser: '[USERS] POST',
+    editUser: '[USERS] EDIT',
+    deleteUser: '[USERS] DELETE',
 
     //Prestamos
     getPrestamos: '[PRESTAMOS] GET',

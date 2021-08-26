@@ -3,6 +3,7 @@ import { cleanActive } from "../Actions/active";
 import { startGetBooks } from "../Actions/books";
 import { startAddPrestamo, startEditPrestamo } from "../Actions/prestamos";
 import { closeModalAction } from "../Actions/ui";
+import { startEditUser, startPostUser } from "../Actions/user";
 import { agregarLibro, editarLibro } from "./fetch";
 import { swalMenssage, Toast } from "./login";
 
@@ -43,6 +44,30 @@ export const validarPostPrestamo = (prestamo, dispatch, edit = false) => {
         //await agregarBookPromise(libro, dispatch, reset);
     }
 
+
+}
+
+
+export const validarUsuario  =(usuario, dispatch, edit = false, confirmPass) => {
+    console.log(usuario);
+    if(!edit){
+        console.log('vamos a posterar');    
+        if(!usuario.nombre || !usuario.apellidos || !usuario.email || !usuario.password || !usuario.telefono || !usuario.numeroC || !usuario.carrera || !usuario.type ){   
+            return 'Campos Vacios';
+        }else if(usuario.password !== confirmPass){
+            return 'La contraseña no coincide con su confirmacion, Verifiquelo porfavor'
+        }else{
+            dispatch(startPostUser(usuario))
+        }
+    }else{
+        if(usuario.password &&  usuario.password !== confirmPass){
+            return 'La contraseña no coincide con su confirmacion, Verifiquelo porfavor'
+        }
+        dispatch(startEditUser(usuario.uid, usuario))
+    }
+
+    
+    
 
 }
 
@@ -114,6 +139,12 @@ const editBookPromise = async(libro,dispatch, reset) => {
     }
 
 }
+
+
+export const validarPrestamos = (prestamos) => prestamos.some(prestamo => prestamo.devolucion === false);
+    
+
+
 
 
 

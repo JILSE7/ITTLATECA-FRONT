@@ -32,6 +32,16 @@ export const initialPrestamo = {
         observaciones : ""
 };
 
+export const initialUser =  {
+    nombre: '',
+    apellidos: '',
+    email: '',
+    telefono: '',
+    numeroC: '',
+    carrera: '',
+    type: '',
+    password: ''
+}
 
 export const resetPrestamo = (obj) => {
   obj.usuario = "";
@@ -39,4 +49,8 @@ export const resetPrestamo = (obj) => {
   obj.fechaRetiro  =  "";
   obj.fechaDevolucion  =  "";
   obj.observaciones =  ""
-}
+};
+
+
+//Carreras
+export const carrers = ['INDUSTRIAL', 'ELECTRICA', 'ELECTROMECANICA', 'GE', 'TICS', 'MECANICA', 'MECATRONICA', 'DOCENTE', 'OTRO']

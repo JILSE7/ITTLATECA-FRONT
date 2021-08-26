@@ -39,7 +39,7 @@ const ModalBook = () => {
     const [file, setFile] = useState("")
 
 
-    useEffect(() => setValues((!active) ?  initialBook:item) , [active]);
+    useEffect(() => setValues((!active) ?  initialBook:item) , [active, item, setValues]);
     
 
    const closeModal  =() =>{

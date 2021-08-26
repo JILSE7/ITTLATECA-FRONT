@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react'
+import { FaSearchengin } from 'react-icons/fa';
+import { RiBook2Line } from 'react-icons/ri';
 import { useDispatch, useSelector } from 'react-redux';
+import { openModalAction } from '../../Actions/ui';
 import { startGetUsers } from '../../Actions/user';
 import TableUsers from '../../Components/Admin/TableUsers';
+import ModalUsuario from '../../Components/Modal/ModalUsuario';
 import { busquedUsuario } from '../../Helpers/searchBooks';
 import { useForm } from '../../Hooks/useForm';
 import useType from '../../Hooks/useType';
@@ -9,7 +13,9 @@ import useType from '../../Hooks/useType';
 const UsuarioScreen = ({user}) => {
     //Veificando administrador
     useType(user.type);
+    //Redux
     const [{search}, handleInputChange] = useForm({search:''});
+    const dispatch = useDispatch();
     const usuarios = useSelector(state => state.users);
     
     //states
@@ -17,7 +23,7 @@ const UsuarioScreen = ({user}) => {
     const [searchUsers, setSearchUsers] = useState([])
     
 
-    const dispatch = useDispatch();
+    //Traer los usuarios en caso de que no esten
     useEffect(() => {
         if(!usuarios.total){
             dispatch(startGetUsers());
@@ -25,6 +31,8 @@ const UsuarioScreen = ({user}) => {
             setUsers([...usuarios.users])
         }
     }, [dispatch, usuarios]);
+
+
 
     
     
@@ -34,13 +42,22 @@ const UsuarioScreen = ({user}) => {
     }, [users,search]);
     
     
-
+    const handlerClick = () => {
+        dispatch(openModalAction());
+    }
     
     return (
         <div className="container">
             <div className="_LibroScreen-body">
-            <div className="buscar"> 
-                    <input placeholder="Buscar por Nombre, NumeroC" className="form-control" name="search" value={search} onChange={handleInputChange}/>
+            <div className="d-flex w-100">
+                <div className="buscar"> 
+                    <h3 className="text-center"><FaSearchengin/> Buscar</h3>
+                    <input placeholder="Buscar por Nombre o Numero de control" className="form-control mb-5 text-center w-50" name="search" value={search} onChange={handleInputChange}/>
+                </div>
+                <div className="añadir">
+                    <h3>Añadir nuevo libro</h3>
+                    <button className="btn btn-outline-success mb-5" onClick={handlerClick}>+ <RiBook2Line/></button>
+                </div>
                 </div>
             <table class="table">
                 <thead>
@@ -65,6 +82,7 @@ const UsuarioScreen = ({user}) => {
                     } 
                 </tbody>
                 </table>
+                <ModalUsuario/>
             </div>
         </div>
     )

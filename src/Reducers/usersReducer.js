@@ -8,12 +8,19 @@ const initialState = {
 export const usersReducer = (state = initialState, action) => {
     switch (action.type) {
         case types.getUser:
-            console.log(action.payload);
             return{
                 total: action.payload.total,
                 users: [...action.payload.users]
             }
-    
+        case types.postUser: 
+        return state
+
+        case types.editUser: 
+        return state
+
+        case types.deleteUser: 
+        return state
+        
         default:
             return state;
     }

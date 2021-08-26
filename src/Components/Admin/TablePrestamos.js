@@ -17,13 +17,13 @@ const TablePrestamos = ({prestamo}) => {
         //Handlers
         const handlerEdit = async() =>{
             dispatch(setActive(prestamo)); 
-            const resp =await  isConfirmed(nombre,true, 'warning');
+            const resp =await  isConfirmed(nombre,'el prestamo',true, 'warning');
 
            (resp) ?  dispatch(openModalAction()) : dispatch(cleanActive());
         }
 
         const handlerDelet = async() => {
-            const resp = await isConfirmed(nombre,false, 'error');
+            const resp = await isConfirmed(nombre,'el prestamo',false, 'error');
 
             if(!resp)return;
 

@@ -90,7 +90,7 @@ export const startEditPrestamo = (IdPrestamo,data) => {
                     dispatch(startGetPrestamos());
                     toastMessage(resp.msg)
                     dispatch(cleanActive());
-                    //dispatch(startGetBooks());
+                    dispatch(startGetBooks());
                     dispatch(closeModalAction());
                 }    
             } catch (error) {
@@ -115,7 +115,7 @@ export const startDevolucion = (idPrestamo) => {
                 dispatch(startGetPrestamos());
                 toastMessage(`Prestamo con id ${idPrestamo} actualizado`)
                 dispatch(cleanActive());
-                //dispatch(startGetBooks());
+                dispatch(startGetBooks());
                 dispatch(closeModalAction());
             }    
         } catch (error) {
