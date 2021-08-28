@@ -31,7 +31,6 @@
     }
 
     .table-row{
-        background-color: rgb(233, 231, 231);
         transition: all 300ms;
         
         &:hover{
@@ -39,6 +38,14 @@
         }
 
     };
+    .activo{
+        background-color: rgb(233, 231, 231);
+    }
+    .inactivo { 
+        background-color: rgba(192, 191, 191, 0.837);
+
+        color: gray;
+    }
 
     .font-id{
         font-size: 12px;
@@ -56,3 +63,5 @@
     display: flex;
     justify-content: space-around;
 }
+
+

@@ -5,6 +5,8 @@ import { logOut } from '../../Actions/auth';
 import {FaUserCircle} from 'react-icons/fa'
 
 //Logos
+import logo from '../../Assets/ITTLA.png';
+import logo2 from '../../Assets/tecnm.png';
 //import tecnm from '../../Assets/tecnm.png';
 import { destroyBooks } from '../../Actions/books';
 
@@ -25,33 +27,38 @@ const Header = () => {
     return (
         <div className="header">
             <nav className="navbar">
-                
-                <Link to="/" className="navbar-brand" >
-                <img className="imgHeader" src="https://universidadesdemexico.mx/logos/original/logo-instituto-tecnologico-de-tlalnepantla.png" alt="" /> 
+                <div className="navbarLeft">
+                <Link to="/" className="navbar-brand divImage" >
+                <img className="imgHeader" src={logo} alt="" /> 
                 </Link>
                 
                 <h1>ITTLATECA</h1>
-               { (login) ?  (<ul className="navbar-nav">
-                  <li className="nav-item dropdown">
-                    <div className="perfil dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <FaUserCircle className="" style={{fontSize: '44px'}}/>
-                    </div>
-                    <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                      <li><Link className="dropdown-item" to="/perfil">Mi perfil</Link></li>
-                      <li><Link className="dropdown-item" to="/search">Buscar Libros</Link></li>
-                      <li><p onClick={handlerLogout} className="dropdown-item cursor">Salir</p></li>
-                    </ul>
-                  </li>
-                </ul>) : <img className="imgHeader tecnm" src="https://pbs.twimg.com/profile_images/468146735047389184/HUX8h7U8_400x400.jpeg" alt="" />  }
+
+                </div>
+                <div>
+                      {  (login) ?  (<ul className="navbar-nav">
+                          <li className="nav-item dropdown">
+                            <div className="perfil dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <FaUserCircle className="icon" />
+                            </div>
+                            <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                              <li><Link className="dropdown-item" to="/perfil">Mi perfil</Link></li>
+                              <li><Link className="dropdown-item" to="/search">Buscar Libros</Link></li>
+                              <li><p onClick={handlerLogout} className="dropdown-item cursor">Salir</p></li>
+                            </ul>
+                          </li>
+                        </ul>) : <img className="tecnm" src={logo2} alt="" />  }
+                  
+                </div>
         
             </nav>
             
         </div>
     )
-}
-
-export default Header
-
+  }
+  
+  export default Header
+  
 
 
 

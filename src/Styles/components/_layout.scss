@@ -1,17 +1,22 @@
+
+
 .header{
-    height: 100px;
+    height: 70px;
     background-color: #1b396a;
+    
+
     
 }
 .imgHeader{
-    width: 80px;
-    height: 80px;
-    border-radius: 100px;
+    width: 50px;
+    height: 50px;
+    
 };
 .dropdown-toggle::after {
     vertical-align: -5px;
 }
 .icon{
+    font-size: 40px;
     transition: all 300ms;
     &:hover{
         color: gray;
@@ -21,14 +26,37 @@
 
 .navbar{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    align-items:center;
+    margin: 0px 30px;
+
+    .navbarLeft{
+        display: flex;
+        
+        align-items: center;
+        justify-content: center;
+        .divImage{
+            margin-right: 10px;
+        }
+        
+    }
 
     h1{
-        margin-right: 35px;
-        color: white;
+        margin: 0;
+        font-size: 36px;
+        color: rgb(242, 240, 240);
+        border-left: 1px solid white;
+        padding-left: 10px;
+        
+        
     }
+
+    
 }
 
+.tecnm{
+    width: 90px;
+}
 
 .perfil{
     color: white;
@@ -44,6 +72,11 @@
         margin: 0;
         padding: 0;
     }
+
+    h2{
+        color: white;
+    }
+    
     
 }
 
@@ -51,6 +84,20 @@
 
 .navbar-nav .dropdown-menu{
     position: absolute;
+    left: -80px;
+    height: 110px;
+    background-color:#1b396a ;
+
+    
+    li> a, li>p{
+        color: white;
+        text-align: center;
+
+        &:hover{
+            background-color: #05409e;
+            
+        }
+    }
 }
 
 .cursor{
@@ -60,21 +107,40 @@
 @media (max-width: 600px) {
 
     .header{
-        height: 80px;
-    };
-
-    .imgHeader{
-        width: 60px;
         height: 60px;
     };
-    .dropdown-menu[data-bs-popper]{
-        left: -100px;
-        top: 80%;
+
+    .navbar{
+        margin: 0px 10px;
+            
+            .navbarLeft{
+                
+                h1{
+                    font-size: 20px;
+                }
+            
+        }
     };
 
-    h1{
-        margin-right: 15px;
+    .tecnm{
+        width: 70px;
     }
+
+    .icon{
+        font-size: 30px;
+    }
+
+    .imgHeader{
+        width: 40px;
+        height: 38px
+        
+    };
+    .dropdown-menu[data-bs-popper]{
+        left: -110px;
+        
+    };
+
+
     
     
   }

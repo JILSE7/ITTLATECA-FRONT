@@ -142,6 +142,7 @@ const editBookPromise = async(libro,dispatch, reset) => {
 
 
 export const validarPrestamos = (prestamos) => prestamos.some(prestamo => prestamo.devolucion === false);
+
     
 
 

@@ -72,7 +72,6 @@ const LibroScreen = ({user}) => {
                     <th scope="col">Existencias</th>
                     <th scope="col">Disponibles</th>
                     <th scope="col">Ubicacion</th>
-                    <th scope="col">Prestamos</th>
                     <th scope="col">Acciones</th>
                     </tr>
                 </thead>

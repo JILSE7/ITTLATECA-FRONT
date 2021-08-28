@@ -25,6 +25,8 @@ export const bookReducer = (state = initialState, action) => {
                     ...state,
                     LibrosBuscados: action.payload
                 }
+            case types.deleteBook: 
+            return state
         default:
             return state;
     }

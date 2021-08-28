@@ -8,6 +8,8 @@ export const types = {
     getBooks : '[BOOKS] GET',
     destroyBooks: '[BOOKS] DESTROY',
     saveBooks: '[BOOKS] SAVE',
+    deleteBook: '[BOOK] DELETE',
+    toogleUser: '[BOOK] TOOGLE',
     //Users
     getUser : '[USERS] GET',
     postUser: '[USERS] POST',
