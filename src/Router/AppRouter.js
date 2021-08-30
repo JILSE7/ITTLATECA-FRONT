@@ -30,19 +30,19 @@ const AppRouter = () => {
 
     
     
-    useEffect(() => {
+    useEffect(async() => {
         setCheckin(true)
-        dispatch(startChecking());
-        setTimeout(() => {
-            setCheckin(false)
-        }, 800);
+        const hola = await dispatch(startChecking(setCheckin));
+        setCheckin(hola)
     }, [dispatch])
     
     
     
     if(checkin){
         return (
-                <p>hola</p>
+                <div className="Wait">
+                    <img src="https://pbs.twimg.com/profile_images/468146735047389184/HUX8h7U8.jpeg" alt="OrgulloLagarto"/>
+                </div>
         );
     }
     

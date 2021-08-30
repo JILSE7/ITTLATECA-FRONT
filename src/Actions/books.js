@@ -18,10 +18,10 @@ const toggleBook = () => ({type: types.toogleUser})
 export const startGetBooks = () => {
     return async(dispatch) => {
 
-        const libros = await (await fetchConToken('/libros')).json();
+        const libros = await (await fetchConToken('libros')).json();
     
         if(!libros.ok){
-            booksMensaje(libros);
+            booksMensaje(libros.msg);
         }else{
             dispatch(getBooks(libros.libros, libros.total));
         }

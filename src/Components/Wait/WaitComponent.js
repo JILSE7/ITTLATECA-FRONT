@@ -1,11 +1,11 @@
 import React from 'react'
 
-const App = () => {
+const WaitComponent = () => {
     return (
         <div>
-            <h1>Hola</h1>   
+            hola
         </div>
     )
 }
 
-export default App
+export default WaitComponent

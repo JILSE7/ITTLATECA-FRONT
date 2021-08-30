@@ -57,9 +57,9 @@ export const startAddPrestamo = (data) => {
     return async(dispatch) => {
         try {
             const resp = await (await fetchConToken('prestamos',data,'POST')).json();
-
+            
             if(!resp.ok){
-                booksMensaje(resp);
+                booksMensaje(resp.msg);
             }else{
                 toastMessage(`Prestamos Agregado a la base datos`)
                 dispatch(addPrestamo());
@@ -80,7 +80,7 @@ export const startAddPrestamo = (data) => {
 export const startEditPrestamo = (IdPrestamo,data) => {
         return async(dispatch) => {
             try {
-                const resp = await (await fetchConTokenPrueba(`prestamos/${IdPrestamo}`,data,'PUT')).json();
+                const resp = await (await fetchConToken(`prestamos/${IdPrestamo}`,data,'PUT')).json();
                 console.log(resp);
     
                 if(!resp.ok){
@@ -107,7 +107,7 @@ export const startDevolucion = (idPrestamo) => {
     const data = {devolucion : true};
     return async(dispatch) => {
         try {
-            const resp = await (await fetchConTokenPrueba(`prestamos/${idPrestamo}`,data,'PUT')).json();
+            const resp = await (await fetchConToken(`prestamos/${idPrestamo}`,data,'PUT')).json();
             if(!resp.ok){
                 booksMensaje(resp.msg);
             }else{

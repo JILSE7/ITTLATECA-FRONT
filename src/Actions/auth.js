@@ -20,21 +20,24 @@ export const startLogin = (data) => {
 };
 
 
-export const startChecking = () => {
+export const startChecking = ({setCheckin}) => {
     console.log('cuantas veces pase por aqui?');
-    
     return async(dispatch) => {
         
         const login = await (await fetchConToken('/auth')).json();
         console.log(login);
         if(!login.ok){
             loginMesagges(login);
-            return;
+            
+            return false;
         }
     
         if(login.ok){ 
             localStorage.setItem('token', login.token);
+            
             dispatch(loginStore(login.user));
+
+            return false;
         }
     }
     

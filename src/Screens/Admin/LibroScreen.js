@@ -52,7 +52,7 @@ const LibroScreen = ({user}) => {
                 <div className="d-flex w-100">
                 <div className="buscar"> 
                     <h3 className="text-center"><FaSearchengin/> Buscar</h3>
-                    <input placeholder="Buscar por Nombre, Autor, Editorial" className="form-control mb-5 text-center w-50" name="search" value={search} onChange={handleInputChange}/>
+                    <input autoComplete='off' placeholder="Buscar por Nombre, Autor, Editorial" className="form-control mb-5 text-center w-50" name="search" value={search} onChange={handleInputChange}/>
                 </div>
                 <div className="añadir">
                     <h3>Añadir nuevo libro</h3>

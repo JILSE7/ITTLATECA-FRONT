@@ -1,0 +1,30 @@
+.DrawerContainer{
+    text-align: center;
+        .ant-drawer-title{
+            color: #1b396a;
+        }
+        
+        .drawerMenu{
+            text-decoration: none;
+            list-style: none !important;
+            
+            .itemDrawe{
+                
+             
+            }
+        }
+
+        .ant-drawer-body{
+            border: 1px solid black;
+            
+        }
+
+        .DrawerBody{
+            display: flex;
+            flex-direction: column;
+            height: 20%;
+            border: 1px solid black;
+            justify-content: space-around;
+        }
+    
+}

@@ -41,6 +41,18 @@
     }
 
 
+    .Wait{
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img{
+            width: 300px;
+        }
+    }
+
+
     @media (max-width: 600px) {
         .containerLogin{
             min-height: 600px;

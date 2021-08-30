@@ -1,0 +1,1 @@
+export const fondoIcons = (color)=> (window.outerWidth<=600) ? `btn btn-outline-${color}` : `btn btn-${color}`

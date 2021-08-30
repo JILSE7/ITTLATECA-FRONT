@@ -61,7 +61,7 @@ const PrestamoScreen = ({user}) => {
             <div className="d-flex w-100">
                     <div className="buscar"> 
                         <h3 className="text-center"><FaSearchengin/> Buscar</h3>
-                        <input placeholder="Buscar por ultimos 4 digitos del id" className="form-control" name="search" value={search} onChange={handleInputChange}/>
+                        <input autoComplete='off' placeholder="Buscar por ultimos 4 digitos del id" className="form-control w-50" name="search" value={search} onChange={handleInputChange}/>
                         <p className="text-center mt-3">Filtrar por libros no devueltos { (!devoluciones) ? <BiCheckbox onClick={toggleDevoluciones}/> : <BiCheckboxChecked onClick={toggleDevoluciones}/> }</p> 
                     </div>
                     <div className="añadir">

@@ -11,12 +11,12 @@ const Fecha = ({values, retiro= true, edit = false}) => {
     
     console.log(edit);
     function onChange(date, dateString) {
+        console.log(date.format('ll'));
+/*         const dateParse = dayjs(dateString).format('DD MMMM YYYY').split(' ');
+        const dateChida = dateParse[0] + " de " + dateParse[1] + " del " + dateParse[2]; */
         
-        const dateParse = dayjs(dateString).format('DD MMMM YYYY').split(' ');
-        const dateChida = dateParse[0] + " de " + dateParse[1] + " del " + dateParse[2];
-
         if(date){
-            (retiro) ?  values.fechaRetiro = dateChida : values.fechaDevolucion = dateChida;
+            (retiro) ?  values.fechaRetiro = date.format('ll') : values.fechaDevolucion = date.format('ll');
         }else{
             (retiro) ?  values.fechaRetiro = '' : values.fechaDevolucion = '';
         }

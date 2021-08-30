@@ -19,21 +19,27 @@ $base-border: 1px solid black;
     
     .menuBotones{
         min-height: 200px;
+        
         display: flex;
-        flex-direction: column;
         justify-content: space-around;
+        flex-wrap: wrap;
         margin-bottom: 20px;
+
+        .cards{
+            margin-bottom: 20px;
+        }   
+
+    }
+    span{
+        font-size: 22px;
+        color: green;
     }
     .avisos{
-        height: 400px;
+        height: 300px;
         text-align: center;
         overflow-y: scroll;
         margin-bottom: 30px;
 
-        span{
-            font-size: 22px;
-            color: green;
-        }
         
         p{
             text-align: center;
@@ -41,13 +47,41 @@ $base-border: 1px solid black;
     }
 }
 
+.ant-card-cover > *{
+    padding: 10px;
+}
 
+ul{
+    padding-left: 0;
+}
+
+.events{
+
+    li{
+        list-style: none;
+    }
+
+        .ant-badge-status-text{
+            font-size: 8px;
+        }
+    }
+    .ant-badge-status{
+        line-height: 7px;
+    }
+  
 
 @media (max-width: 600px) {
     .container{
 
         .menuBotones{
-            height: 250px;
+            width: 100%;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 250px;
+            
+
+            
         }
     }
     

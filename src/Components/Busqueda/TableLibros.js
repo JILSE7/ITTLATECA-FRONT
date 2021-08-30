@@ -61,7 +61,7 @@ const   TableLibros = ({libro}) => {
 
 
     return (
-        <tr className={ (activo)? "table-row  align-middle activo" : "table-row align-middle inactivo"} >
+        <tr className={ (activo)? "table-row  align-middle" : "table-row align-middle inactivo"} >
                     <th  scope="row" className="font-id">{idLibro}</th>
                     <td>{nombre}</td>
                     <td><img className="imagen-libro" src={imagen} alt={nombre}/></td>
