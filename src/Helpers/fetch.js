@@ -1,5 +1,5 @@
 //Peticiones con token y sin token
-//const baseURL = "http://localhost:8081/ITTLATECA";
+//const baseURL = "http://localhost:8080/ITTLATECA";
 const baseURL ="https://ittlateca-backend-nodejs.herokuapp.com/ITTLATECA";
 
 const fetchSinToken = (endpoint, data, method = 'GET') =>{

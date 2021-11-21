@@ -55,7 +55,7 @@ const UsuarioScreen = ({user}) => {
                     <input placeholder="Buscar por Nombre o Numero de control" className="form-control mb-5 text-center w-50" name="search" value={search} onChange={handleInputChange}/>
                 </div>
                 <div className="añadir">
-                    <h3>Añadir nuevo libro</h3>
+                    <h3>Añadir nuevo usuario</h3>
                     <button className="btn btn-outline-success mb-5" onClick={handlerClick}>+ <RiBook2Line/></button>
                 </div>
                 </div>

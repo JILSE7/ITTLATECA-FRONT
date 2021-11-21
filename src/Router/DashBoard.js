@@ -9,6 +9,7 @@ import BusquedaScreen from "../Screens/AllUsers/Busqueda/BusquedaScreen";
 
 import MainScreen from '../Screens/AllUsers/MainScreen';
 import PerfilScreen from "../Screens/AllUsers/PerfilScreen";
+import PrestamosUserScreen from "../Screens/AllUsers/PrestamosUserScreen";
 
 export const DashBoardRoutes = () => {
     const {user} = useSelector(state => state.auth);
@@ -23,6 +24,7 @@ export const DashBoardRoutes = () => {
                 <Route exact path="/perfil" component={PerfilScreen}/>
                 <Route exact path="/busquedas" component={BusquedaScreen}/>
                 <Route exact path="/libro/:id" component={BookScreen}/>
+                <Route exact path="/prestamos" ><PrestamosUserScreen prestamos={user.prestamos}/></Route>
                 <Route exact path="/admin"><AdminScreen user={user}/></Route>
                 <Route exact path="/admin/usuarios"><UsuarioScreen user={user}/></Route>
                 <Route exact path="/admin/prestamos" ><PrestamoScreen user={user}/></Route>

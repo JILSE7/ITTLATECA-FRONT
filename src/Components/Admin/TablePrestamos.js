@@ -2,7 +2,6 @@ import React from 'react'
 import { MdDelete, MdModeEdit } from 'react-icons/md';
 import {FaHandHolding} from 'react-icons/fa'
 import { useDispatch } from 'react-redux';
-import Swal from 'sweetalert2';
 import { cleanActive, setActive } from '../../Actions/active';
 import { openModalAction } from '../../Actions/ui';
 import { startDeletePrestamo, startDevolucion } from '../../Actions/prestamos';

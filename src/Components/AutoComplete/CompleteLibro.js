@@ -1,7 +1,7 @@
-import { Input, AutoComplete } from 'antd';
+import {  AutoComplete } from 'antd';
 //import { UserOutlined } from '@ant-design/icons';
 import 'antd/dist/antd.css';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 const { Option } = AutoComplete;
 
 const CompleteLibro = ({books, obj}) => {

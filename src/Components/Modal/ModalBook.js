@@ -60,7 +60,7 @@ const ModalBook = () => {
       
       
               if(fileSelected){
-                const {isConfirmed, isDismissed} = await  Swal.fire({
+                const {isConfirmed} = await  Swal.fire({
                   imageUrl: URL.createObjectURL(fileSelected),
                   imageHeight: 300,
                   imageAlt: 'A tall image',

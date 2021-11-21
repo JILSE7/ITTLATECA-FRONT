@@ -1,4 +1,4 @@
-import { fetchConToken, fetchConTokenPrueba, fetchSinToken, fetchSinTokenPrueba } from "../Helpers/fetch";
+import { fetchConToken, fetchSinToken } from "../Helpers/fetch";
 import { booksMensaje, toastMessage } from "../Helpers/login";
 import { types } from "../Types/types";
 import { cleanActive } from "./active";
@@ -18,7 +18,7 @@ const addPrestamo = () => ({type: types.addPrestamo });
 
 const editPrestamo = () => ({type: types.editPrestamo });
 
-
+export const destroyPrestamos = () => ({type: types.destroyPrestamos})
 
 export const startGetPrestamos = () => {
     return async(dispatch) => {
@@ -122,4 +122,6 @@ export const startDevolucion = (idPrestamo) => {
             console.log(error);
         }
     }
-}
+};
+
+

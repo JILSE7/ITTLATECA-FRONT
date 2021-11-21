@@ -45,9 +45,9 @@ const BusquedaScreen = ({history}) => {
                 <div className="_busquedas_info">
                     <h4 className="mb-4">Recuerda que puedes buscar por: </h4>
                     <ul>
-                            <li><VscWholeWord  style={{fontSize: '24px'}} /> Nombre del libro</li>
-                            <li><RiUser2Fill style={{fontSize: '24px'}}/> Auto del libro</li>
-                            <li><SiAtom style={{fontSize: '24px'}}/> Categoria del libro</li>
+                            <li><VscWholeWord  style={{fontSize: '24px'}} className="_busquedas-icon"/> Nombre del libro</li>
+                            <li><RiUser2Fill style={{fontSize: '24px'}} className="_busquedas-icon"/> Autor del libro</li>
+                            <li><SiAtom style={{fontSize: '24px'}} className="_busquedas-icon"/> Categoria del libro</li>
                     </ul>
                     <p>{total} Libros en biblioteca</p>
                 </div>

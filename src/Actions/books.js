@@ -1,4 +1,4 @@
-import { fetchConToken, fetchConTokenPrueba } from "../Helpers/fetch";
+import { fetchConToken } from "../Helpers/fetch";
 import { booksMensaje, toastMessage } from "../Helpers/login";
 import { types } from "../Types/types";
 
@@ -55,7 +55,7 @@ export const addLibro = (libro) => {
 export const startToggleLibro = (idLibro, activo) => {
     return async(dispatch) => {
 
-        const resp = await (await fetchConTokenPrueba(`libros/unable/${idLibro}`,{activo: !activo}, 'PUT')).json();
+        const resp = await (await fetchConToken(`libros/unable/${idLibro}`,{activo: !activo}, 'PUT')).json();
 
         if(!resp.ok){
             booksMensaje(resp);
@@ -72,7 +72,7 @@ export const startToggleLibro = (idLibro, activo) => {
 export const startDeleteLibro = (idLibro) => {
     return async(dispatch) => {
 
-        const resp = await (await fetchConTokenPrueba(`libros/${idLibro}`,{}, 'DELETE')).json();
+        const resp = await (await fetchConToken(`libros/${idLibro}`,{}, 'DELETE')).json();
 
         if(!resp.ok){
             booksMensaje(resp);

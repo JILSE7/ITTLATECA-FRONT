@@ -1,7 +1,6 @@
-import { Input, AutoComplete } from 'antd';
-//import { UserOutlined } from '@ant-design/icons';
+import {  AutoComplete } from 'antd';
 import 'antd/dist/antd.css';
-import { useEffect, useState } from 'react';
+import {  useState } from 'react';
 const { Option } = AutoComplete;
 
 const CompleteUser = ({users, obj}) => {

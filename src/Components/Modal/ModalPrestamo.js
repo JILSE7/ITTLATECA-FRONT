@@ -9,8 +9,8 @@ import { startGetUsers } from '../../Actions/user';
 import { startGetBooks } from '../../Actions/books';
 //Helpers & Hooks
 import {useForm} from '../../Hooks/useForm'
-import { customStyles, initialBook, initialPrestamo, resetPrestamo } from '../../Helpers/initialStates';
-import { validarPostLibro, validarPostPrestamo } from '../../Helpers/validarCampos';
+import { customStyles, initialPrestamo, resetPrestamo } from '../../Helpers/initialStates';
+import { validarPostPrestamo } from '../../Helpers/validarCampos';
 
 //Components
 import CompleteUser from '../AutoComplete/CompleteUser';
@@ -32,7 +32,7 @@ const ModalPrestamo = () => {
     const {libros} = useSelector(state => state.books);
     
     //states
-    const [values, handlerInputChange, reset, setValues] = useForm((!active) ?  initialPrestamo:item);
+    const [values, handlerInputChange, , setValues] = useForm((!active) ?  initialPrestamo:item);
 
     //Para buscar a los usuarios y libros
     const [users, setUsers] = useState([]);

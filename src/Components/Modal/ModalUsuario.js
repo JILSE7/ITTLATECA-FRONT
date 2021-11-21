@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, {  useEffect, useState } from 'react';
 import Modal from 'react-modal';
 
 //Redux
@@ -8,7 +8,7 @@ import { closeModalAction } from '../../Actions/ui';
 
 //Helpers & Hooks
 import {useForm} from '../../Hooks/useForm'
-import { carrers, customStyles, initialPrestamo, initialUser } from '../../Helpers/initialStates';
+import { carrers, customStyles, initialUser } from '../../Helpers/initialStates';
 import { validarUsuario } from '../../Helpers/validarCampos';
 
 Modal.setAppElement('#root');
@@ -25,7 +25,7 @@ const ModalUsuario = () => {
     
     
     //states
-    const [values, handlerInputChange, reset, setValues] = useForm((!active) ?  initialUser:item);
+    const [values, handlerInputChange, , setValues] = useForm((!active) ?  initialUser:item);
     
     //Para retroalimentar campos vacios
     const [confirmPass, setConfirmPass] = useState('');

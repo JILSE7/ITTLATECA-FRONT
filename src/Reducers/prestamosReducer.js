@@ -24,6 +24,9 @@ export const prestamosReducer = (state = initialState, action) => {
         
         case types.editPrestamo:
             return state
+
+        case types.destroyPrestamos: 
+        return initialState;
     
         default:
             return state;

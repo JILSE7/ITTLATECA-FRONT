@@ -1,4 +1,3 @@
-import React from 'react'
 import { types } from '../Types/types';
 
 const initialState = {

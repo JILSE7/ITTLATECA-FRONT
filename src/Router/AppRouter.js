@@ -4,8 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
     BrowserRouter as Router,
     Switch,
-    Route,
-    Redirect,
 } from 'react-router-dom';
 import { startChecking } from '../Actions/auth';
 import Layout from '../Components/Layout/Layout';
@@ -24,6 +22,7 @@ const AppRouter = () => {
     const [checkin, setCheckin] = useState(false);
     const dispatch = useDispatch();
     const {login} = useSelector(state => state.auth);
+    
     
     
 

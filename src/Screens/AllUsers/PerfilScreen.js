@@ -1,7 +1,7 @@
 import React from 'react'
 import { AiOutlineFieldNumber } from 'react-icons/ai';
 import { FaUserAstronaut } from 'react-icons/fa';
-import { GiToolbox, GiWhiteBook } from 'react-icons/gi';
+import { GiToolbox } from 'react-icons/gi';
 import { ImBook, ImDatabase } from 'react-icons/im';
 import {MdEmail, MdPhoneIphone, MdSchool  } from 'react-icons/md';
 import { useSelector } from 'react-redux'

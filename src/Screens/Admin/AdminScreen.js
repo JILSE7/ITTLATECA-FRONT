@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from 'react'
+import React, { useEffect } from 'react'
 import { FaHandshake, FaUsersCog } from 'react-icons/fa';
 import { ImBooks } from 'react-icons/im';
 import { useHistory } from 'react-router-dom';

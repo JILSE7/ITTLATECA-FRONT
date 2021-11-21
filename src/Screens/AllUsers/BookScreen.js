@@ -59,7 +59,7 @@ const BookScreen = () => {
                                 </tr>
                                 <tr>
                                     <th scope="row"> <RiUser2Fill style={{fontSize: '24px'}}/></th>
-                                    <td>{libro.autor}</td>
+                                    <td >{libro.autor}</td>
                                 </tr>
                                 <tr>
                                     <th scope="row"><BiBookmarks style={{fontSize: '24px'}}/></th>

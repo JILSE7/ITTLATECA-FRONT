@@ -1,11 +1,11 @@
 import React from 'react'
 import { FiZap, FiZapOff } from 'react-icons/fi';
 import { MdDelete, MdModeEdit } from 'react-icons/md'
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import Swal from 'sweetalert2';
 import { cleanActive, setActive } from '../../Actions/active';
 import { startDeleteLibro, startToggleLibro } from '../../Actions/books';
-import { closeModalAction, openModalAction } from '../../Actions/ui';
+import { openModalAction } from '../../Actions/ui';
 import { swalMenssage } from '../../Helpers/login';
 import { validarPrestamos } from '../../Helpers/validarCampos';
 

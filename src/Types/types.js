@@ -21,6 +21,9 @@ export const types = {
     deletePrestamo: '[PRESTAMO] DELETE',
     editPrestamo: '[PRESTAMO] EDIT',
     addPrestamo: '[PRESTAMO] ADD',
+    destroyPrestamos: '[PRESTAMOS] DESTROY',    
+    //Prestamos User
+    getPrestamoById : '[PRESTAMOS_ID] GET',
 
     //UI
     openModal: '[MODAL] OPEN',

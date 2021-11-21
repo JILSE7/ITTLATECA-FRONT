@@ -10,6 +10,7 @@ import logo2 from '../../Assets/tecnm.png';
 //import tecnm from '../../Assets/tecnm.png';
 import { destroyBooks } from '../../Actions/books';
 import "animate.css"
+import { destroyPrestamos } from '../../Actions/prestamos';
 
 const Header = () => {
     //Redux
@@ -22,6 +23,7 @@ const Header = () => {
     const handlerLogout = () =>{
       dispatch(logOut());
       dispatch(destroyBooks());
+      dispatch(destroyPrestamos());
       history.replace('/login');
       localStorage.clear();
     }
@@ -48,7 +50,7 @@ const Header = () => {
                             </div>
                             <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                               <li><Link className="dropdown-item" to="/perfil">Mi perfil</Link></li>
-                              <li><Link className="dropdown-item" to="/search">Buscar Libros</Link></li>
+                              <li><Link className="dropdown-item" to="/busquedas">Buscar Libros</Link></li>
                               <li><p onClick={handlerLogout} className="dropdown-item cursor">Salir</p></li>
                             </ul>
                           </li>
